@@ -1,9 +1,10 @@
 # Equivariant Graph Neural Networks with e3nn — A Hands-On Course
 
-A comprehensive, student-friendly tutorial series that builds up from the mathematical
-foundations of Euclidean symmetry to complete, working implementations of state-of-the-art
-equivariant interatomic potentials: **NequIP**, **Allegro**, and **MACE** — with invariant
-baselines (**SchNet**, **DimeNet**) along the way.
+This repository offers a comprehensive, step-by-step and user-friendly tutorial
+series which takes you from the mathematical foundations of Euclidean symmetry
+to a complete and working implementations of state-of-the-art invariant baseline
+models **SchNet**, **DimeNet** and equivariant interatomic potentials such as
+ **NequIP**, **Allegro**, and **MACE**.
 
 Every lesson follows the same philosophy:
 
@@ -28,19 +29,37 @@ Every lesson follows the same philosophy:
   helps but is introduced from scratch in Lesson 01.
 - PyTorch basics (tensors, autograd, `nn.Module`, training loops).
 - Some exposure to molecular systems / atomistic simulation is helpful for Parts
-  03-05 but not required.
+  III-V but not required.
 
 ## Setup
 
 The project is managed with [uv](https://docs.astral.sh/uv/):
 
 ```bash
-cd e3nn_course
+cd e3nn-course                   # change directory to e3nn-course
 uv sync                          # creates .venv with all dependencies
-.venv/bin/python -m ipykernel install --user --name e3nn-course
+source .venv/bin/activate        # activate the virtual environment
+.venv/bin/python -m ipykernel install --user --name e3nn-course   # add the virtual environment to Jupyter kernels (optional)
+uv run jupyter lab               # launch Jupyter Lab
 ```
 
-Key packages: `torch`, `e3nn`, `torch-geometric`, `ase`, `matplotlib`, `plotly`.
+We heavily rely on the following open-source packages packages: `torch`, `e3nn`,
+`torch-geometric`, `ase`, `matplotlib`, and `plotly`.
+
+## Repository Layout
+
+```
+e3nn_course/
+├── README.md                 ← you are here
+├── STYLE_GUIDE.md            ← authoring conventions for all notebooks
+├── pyproject.toml / uv.lock  ← reproducible environment (uv)
+├── course_utils/             ← shared helpers imported by every notebook
+│   ├── equivariance.py       ← numerical equivariance test harness
+│   ├── plotting.py           ← spherical harmonics / irreps / training visualizations
+│   └── data.py               ← small datasets, neighbor lists, train/val splits
+├── notebooks/                ← the lessons (Parts I–V)
+└── papers/                   ← primary literature referenced throughout (see below)
+```
 
 ## Curriculum Map
 
@@ -90,57 +109,45 @@ Key packages: `torch`, `e3nn`, `torch-geometric`, `ase`, `matplotlib`, `plotly`.
 |---|---|
 | `11_molecular_dynamics_ase.ipynb` | Wrap a trained model as an ASE calculator; run MD; sanity checks (energy conservation, RDFs). |
 
-## Repository Layout
-
-```
-e3nn_course/
-├── README.md                 ← you are here
-├── STYLE_GUIDE.md            ← authoring conventions for all notebooks
-├── pyproject.toml / uv.lock  ← reproducible environment (uv)
-├── course_utils/             ← shared helpers imported by every notebook
-│   ├── equivariance.py       ← numerical equivariance test harness
-│   ├── plotting.py           ← spherical harmonics / irreps / training visualizations
-│   └── data.py               ← small datasets, neighbor lists, train/val splits
-├── notebooks/                ← the lessons (Parts I–V)
-└── papers/                   ← primary literature referenced throughout (see below)
-```
-
-## Primary References (in `papers/`)
+## Primary References
 
 **Core frameworks & foundational methods**
 
-- Geiger & Smidt, *e3nn: Euclidean Neural Networks* (2022) — [Geiger arXiv 2207.09453 2022](papers/Geiger%20arXiv%202207.09453%202022.pdf)
-- Thomas et al., *Tensor Field Networks* (2018) — [Thomas arXiv 1802.08219 2018](papers/Thomas%20arXiv%201802.08219%202018.pdf)
-- Weiler et al., *3D Steerable CNNs* (NeurIPS 2018) — [Weiler NeurIPS 2018](papers/Weiler%20NeurIPS%202018.pdf)
-- Battaglia et al., *Relational inductive biases and graph networks* (2018) — [Battaglia arXiv 1806.01261 2018](papers/Battaglia%20arXiv%201806.01261%202018.pdf)
-- Fuchs et al., *SE(3)-Transformers* (NeurIPS 2020) — [Fuchs NeurIPS 2020](papers/Fuchs%20NeurIPS%202020.pdf)
-- Anderson et al., *Cormorant* (NeurIPS 2019) — [Anderson NeurIPS 2019](papers/Anderson%20NeurIPS%202019.pdf)
-- Liao & Smidt, *Equiformer* (ICLR 2023) — [Liao ICLR 2023](papers/Liao%20ICLR%202023.pdf)
+- [Geiger & Smidt, *e3nn: Euclidean Neural Networks* arXiv.2207.09453 (2021)](https://arxiv.org/pdf/2207.09453)
+- [Thomas et al., *Tensor Field Networks* arXiv.1802.08219 (2018)](https://arxiv.org/pdf/1802.08219)
+- [Weiler et al., *3D Steerable CNNs* NeurIPS (2018)](https://proceedings.neurips.cc/paper_files/paper/2018/file/488e4104520c6aab692863cc1dba45af-Paper.pdf)
+- [Battaglia et al., *Relational inductive biases and graph networks* arXiv.1806.01261 (2018)](https://arxiv.org/pdf/1806.01261)
+- [Fuchs et al., *SE(3)-Transformers* NeurIPS (2020)](https://proceedings.neurips.cc/paper_files/paper/2020/file/15231a7ce4ba789d13b722cc5c955834-Paper.pdf)
+- [Anderson et al., *Cormorant* NeurIPS (2019)](https://proceedings.neurips.cc/paper_files/paper/2019/file/03573b32b2746e6e8ca98b9123f2249b-Paper.pdf)
+- [Liao & Smidt, *Equiformer* ICLR (2023)](https://arxiv.org/pdf/2206.11990)
 
 **Equivariant interatomic potentials**
 
-- Batzner et al., *NequIP: E(3)-equivariant GNNs for interatomic potentials* (Nat. Commun. 2022) — [Batzner Nat. Commun. 13 2453 2022](papers/Batzner%20Nat.%20Commun.%2013%202453%202022.pdf)
-- Musaelian et al., *Allegro: local equivariant representations* (Nat. Commun. 2023) — [Musaelian Nat. Commun. 14 579 2023](papers/Musaelian%20Nat.%20Commun.%2014%20579%202023.pdf)
-- Batatia et al., *MACE* (NeurIPS 2022) — [Batatia NeurIPS 2022](papers/Batatia%20NeurIPS%202022.pdf)
-- Batatia et al., *The design space of E(3)-equivariant atom-centred potentials* — [Batatia arXiv 2205.06643 2022](papers/Batatia%20arXiv%202205.06643%202022.pdf) / [Batatia Nat. Mach. Intell. 7 56 2025](papers/Batatia%20Nat.%20Mach.%20Intell.%207%2056%202025.pdf)
-- Kovács et al., *Evaluation of MACE* (2023) — [Kovacs J. Chem. Phys. 159 044118 2023](papers/Kovacs%20J.%20Chem.%20Phys.%20159%20044118%202023.pdf)
-- Kovács et al., *MACE-OFF* — [Kovacs J. Am. Chem. Soc. 147 17598 2025](papers/Kovacs%20J.%20Am.%20Chem.%20Soc.%20147%2017598%202025.pdf)
-- Batatia et al., *MACE-MP-0 foundation model* (2023) — [Batatia arXiv 2401.00096 2024](papers/Batatia%20arXiv%202401.00096%202024.pdf)
+- [Batzner et al., *NequIP: E(3)-equivariant GNNs for interatomic potentials* Nat. Commun. 13 2453 (2022)](https://doi.org/10.1038/s41467-022-29939-5)
+- [Musaelian et al., *Allegro: local equivariant representations* Nat. Commun. 14 579 (2023)](https://doi.org/10.1038/s41467-023-36329-y)
+- [Batatia et al., *MACE* NeurIPS (2022)](https://proceedings.neurips.cc/paper_files/paper/2022/file/4a36c3c51af11ed9f34615b81edb5bbc-Paper-Conference.pdf)
+- Batatia et al., *The design space of E(3)-equivariant atom-centred potentials* (2022)
+   + [Batatia arXiv.2205.06643 2022](https://arxiv.org/pdf/2205.06643)
+   + [Batatia Nat. Mach. Intell. 7 56 2025](https://doi.org/10.1038/s42256-024-00956-x)
+- [Kovács et al., *Evaluation of MACE* J. Chem. Phys. 159 044118 (2023)](https://doi.org/10.1063/5.0155322)
+- [Kovács et al., *MACE-OFF* J. Am. Chem. Soc. 147 17598 (2025)](https://doi.org/10.1021/jacs.4c07099)
+- [Batatia et al., *MACE-MP-0 foundation model* arXiv.2401.00096 (2025)](https://arxiv.org/pdf/2401.00096)
 
 **Atomic Cluster Expansion & theory**
 
-- Drautz, *Atomic cluster expansion* (PRB 2019) — [Drautz Phys. Rev. B 99 014104 2019](papers/Drautz%20Phys.%20Rev.%20B%2099%20014104%202019.pdf)
-- Dusson et al., *ACE: completeness, efficiency, stability* (2022) — [Dusson J. Comput. Phys. 454 110946 2022](papers/Dusson%20J.%20Comput.%20Phys.%20454%20110946%202022.pdf)
-- Nigam et al., *Unified theory of atom-centered representations and message passing* (JCP 2022) — [Nigam J. Chem. Phys. 156 204115 2022](papers/Nigam%20J.%20Chem.%20Phys.%20156%20204115%202022.pdf)
-- Pozdnyakov & Ceriotti, *Incompleteness of GNNs for point clouds* — [Pozdnyakov arXiv 2201.07136 2022](papers/Pozdnyakov%20arXiv%202201.07136%202022.pdf)
-- *Resolving the body-order paradox of MLIPs* (2026) — [Chong J. Chem. Phys. 164 064121 2026](papers/Chong%20J.%20Chem.%20Phys.%20164%20064121%202026.pdf)
+- [Drautz, *Atomic cluster expansion* Phys. Rev. B 99 014104 (2019)](https://doi.org/10.1103/PhysRevB.99.014104)
+- [Dusson et al., *ACE: completeness, efficiency, stability* J. Comput. Phys. 454 110946 (2022)](https://doi.org/10.1016/j.jcp.2022.110946)
+- [Nigam et al., *Unified theory of atom-centered representations and message passing* J. Chem. Phys. 156 204115 (2022)](https://doi.org/10.1063/5.0087042)
+- [Pozdnyakov & Ceriotti, *Incompleteness of GNNs for point clouds* arXiv.2201.07136 (2022)](https://arxiv.org/pdf/2201.07136)
+- [Chong et al., *Resolving the body-order paradox of MLIPs* J. Chem. Phys. 164 064121 (2026)](https://doi.org/10.1063/5.0303302)
 
 **Long-range interactions & periodic systems**
 
-- Grisafi & Ceriotti, *Incorporating long-range physics* (JCP 2019) — [Grisafi J. Chem. Phys. 151 204105 2019](papers/Grisafi%20J.%20Chem.%20Phys.%20151%20204105%202019.pdf)
-- Kosmala et al., *Ewald-based message passing* (2023) — [Kosmala ICML 2023](papers/Kosmala%20ICML%202023.pdf)
-- *Latent Ewald summation* — [Cheng npj Comput. Mater. 11 80 2025](papers/Cheng%20npj%20Comput.%20Mater.%2011%2080%202025.pdf)
-- Kolafa & Perram, *Cutoff errors in Ewald summation* (1992) — [Kolafa Mol. Simul. 9 351 1992](papers/Kolafa%20Mol.%20Simul.%209%20351%201992.pdf)
-- plus additional papers on crystals/periodicity, magnetic ordering, many-body expansions, and scaling (see `papers/`).
+- [Grisafi & Ceriotti, *Incorporating long-range physics* J. Chem. Phys. 151 204105 (2019)](https://doi.org/10.1063/1.5128375)
+- [Kosmala et al., *Ewald-based message passing*  PMLR 202 17544 (2023)](https://proceedings.mlr.press/v202/kosmala23a.html)
+- [Cheng et al., *Latent Ewald summation* npj Comput. Mater. 11 80 (2025)](https://doi.org/10.1038/s41524-025-01577-7)
+- [Kolafa & Perram, *Cutoff errors in Ewald summation* Mol. Simul. 9 351 (1992)](https://doi.org/10.1080/08927029208049126)
 
-**External resource:** the official e3nn MRS Fall 2021 tutorial — <https://e3nn.org/e3nn-tutorial-mrs-fall-2021/>.
+**Additional resources:** 
+
+- [The official e3nn MRS Fall 2021 tutorial](https://e3nn.org/e3nn-tutorial-mrs-fall-2021)
