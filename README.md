@@ -1,4 +1,4 @@
-# Equivariant Graph Neural Networks with e3nn — A Hands-On Course
+# Equivariant Graph Neural Networks with e3nn: A Hands-On Course
 
 This repository offers a comprehensive, step-by-step and user-friendly tutorial
 series which takes you from the mathematical foundations of Euclidean symmetry
@@ -63,7 +63,7 @@ e3nn_course/
 
 ## Curriculum Map
 
-### Part I — Foundations: Symmetry, Irreps, and Equivariant Operations (Lessons 01–04)
+### Part I: Foundations- Symmetry, Irreps, and Equivariant Operations (Lessons 01–04)
 
 | Notebook | Topic |
 |---|---|
@@ -75,7 +75,7 @@ e3nn_course/
 | `03b_tensor_products_e3nn.ipynb` | `o3.FullyConnectedTensorProduct` & friends: paths, weights, instructions dissected. |
 | `04_nonlinearities_and_gates.ipynb` | Equivariant nonlinearities: norm activations, `e3nn.nn.Gate`; building an equivariant MLP. |
 
-### Part II — From Operations to Networks (Lessons 05–06)
+### Part II: From Operations to Networks (Lessons 05-06)
 
 | Notebook | Topic |
 |---|---|
@@ -84,14 +84,14 @@ e3nn_course/
 | `06a_equivariant_convolution.ipynb` | The equivariant graph convolution (Tensor Field Networks / e3nn point convolution): equations + implementation. |
 | `06b_tetris_end_to_end.ipynb` | The classic e3nn "Tetris" exercise: classify chiral 3D shapes with a small equivariant GNN; demonstrate parity. |
 
-### Part III — Invariant Baselines (Lesson 07)
+### Part III: Invariant Baselines (Lesson 07)
 
 | Notebook | Topic |
 |---|---|
 | `07a_schnet.ipynb` | SchNet: continuous-filter convolutions; the invariant message-passing blueprint. |
 | `07b_dimenet.ipynb` | DimeNet(++): directional message passing with angles; strengths and the incompleteness problem. |
 
-### Part IV — State-of-the-Art Equivariant Potentials (Lessons 08–10)
+### Part IV: State-of-the-Art Equivariant Potentials (Lessons 08-10)
 
 | Notebook | Topic |
 |---|---|
@@ -103,7 +103,7 @@ e3nn_course/
 | `10b_mace_theory.ipynb` | MACE: higher-order equivariant message passing = ACE + message passing; the design-space view. |
 | `10c_mace_implementation.ipynb` | Block-by-block MACE in e3nn; training and evaluating forces/energies. |
 
-### Part V — Applications (Lesson 11)
+### Part V: Applications (Lesson 11)
 
 | Notebook | Topic |
 |---|---|
