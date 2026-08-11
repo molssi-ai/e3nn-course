@@ -6,7 +6,9 @@ and working implementations of state-of-the-art invariant baseline models **SchN
 **DimeNet** and equivariant interatomic potentials such as **NequIP**, **Allegro**,
 and **MACE**.
 
-:::{admonition} Under active development :class: note Lessons are being written
+:::{admonition} Under active development 
+:class: note
+Lessons are being written
 and revised continuously. If something is unclear, wrong, or missing, please
 [open an issue](https://github.com/molssi-ai/e3nn-course/issues). Your feedback
 is important to us. 
