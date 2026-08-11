@@ -9,11 +9,9 @@ from __future__ import annotations
 import numpy as np
 import torch
 
-# ---------------------------------------------------------------------------
 # Tetris: the classic e3nn toy dataset of 8 four-block 3D shapes.
 # Two of them (indices 0 and 1) are mirror images of each other — a *chiral* pair —
 # which makes this dataset the standard probe for parity-aware architectures.
-# ---------------------------------------------------------------------------
 
 TETRIS_LABELS = [
     "chiral_shape_1", "chiral_shape_2", "square", "line",
@@ -40,9 +38,7 @@ def tetris(dtype=torch.float64) -> tuple[torch.Tensor, torch.Tensor]:
     return pos, labels
 
 
-# ---------------------------------------------------------------------------
 # Radius graphs (molecules: no PBC; crystals: PBC via ASE)
-# ---------------------------------------------------------------------------
 
 
 def radius_graph(pos: torch.Tensor, r_cut: float, loop: bool = False) -> torch.Tensor:
@@ -73,10 +69,8 @@ def radius_graph_pbc(atoms, r_cut: float):
     return edge_index, torch.from_numpy(S).to(torch.get_default_dtype())
 
 
-# ---------------------------------------------------------------------------
 # Lennard-Jones argon: a tiny energy/forces dataset generated with ASE.
 # Used to train the potentials in Parts IV–V without any external download.
-# ---------------------------------------------------------------------------
 
 
 def make_lj_argon_dataset(

@@ -1,7 +1,17 @@
-"""Plotting helpers shared across the course notebooks."""
+"""Plotting helpers shared across the course notebooks.
+
+Two families live here. The ``plot_*`` functions draw static Matplotlib figures. The
+``scene3d`` / ``draw_*`` / ``show3d`` trio builds *interactive* Plotly scenes for the 3D
+figures -- point clouds, atomistic graphs and spherical harmonics -- which are the ones
+where being able to rotate and zoom actually carries meaning.
+
+The interactive figures embed as self-describing HTML, so they stay live both in a local
+Jupyter session and on the published book page, with no live kernel behind them.
+"""
 
 from __future__ import annotations
 
+import matplotlib.colors as mcolors
 import matplotlib.pyplot as plt
 import numpy as np
 import torch
@@ -105,3 +115,144 @@ def plot_point_cloud(pos, ax=None, color="C0", label=None, edges=None):
             ax.plot(*np.stack([pos[i], pos[j]]).T, c="gray", lw=1, alpha=0.6)
     ax.set_box_aspect((1, 1, 1))
     return ax
+
+
+# Interactive 3D figures with Plotly. Usage mirrors the Matplotlib helpers above, with a
+# Plotly figure in place of the axes and an explicit `cell` for multi-panel figures:
+#     fig = scene3d(1, 2, titles=["before", "after"])
+#     draw_point_cloud(x, fig=fig, cell=(1, 1), color="C0", label="original")
+#     draw_point_cloud(y, fig=fig, cell=(1, 2), color="C1", label="rotated")
+#     show3d(fig, title="a rotation acts on the whole cloud")
+
+
+def _as_array(x):
+    return np.asarray(x.detach().cpu() if torch.is_tensor(x) else x, dtype=float)
+
+
+def _css(color):
+    """Any Matplotlib colour spec ('C0', 'tab:red', '#abc') -> a CSS hex string."""
+    if isinstance(color, (list, tuple, np.ndarray)) and not isinstance(color, str):
+        return [_css(c) for c in color]
+    return mcolors.to_hex(color)
+
+
+def scene3d(rows: int = 1, cols: int = 1, titles=None, height: int | None = None,
+            spacing: float = 0.04):
+    """A Plotly figure of ``rows x cols`` 3D scenes, ready for the ``draw_*`` helpers."""
+    from plotly.subplots import make_subplots
+
+    fig = make_subplots(
+        rows=rows, cols=cols,
+        specs=[[{"type": "scene"} for _ in range(cols)] for _ in range(rows)],
+        subplot_titles=list(titles) if titles is not None else None,
+        horizontal_spacing=spacing, vertical_spacing=spacing,
+    )
+    fig._course_rows, fig._course_cols = rows, cols
+    fig.update_layout(height=height or (360 * rows + 40))
+    return fig
+
+
+def draw_point_cloud(pos, fig=None, cell=(1, 1), color="C0", label=None, edges=None,
+                     size: int = 6, edge_color: str = "gray", symbol: str = "circle"):
+    """Interactive 3D scatter of positions ``(N, 3)``, optionally with edge segments."""
+    import plotly.graph_objects as go
+
+    if fig is None:
+        fig = scene3d()
+    pos = _as_array(pos)
+    row, col = cell
+
+    if edges is not None:
+        e = np.asarray(edges.detach().cpu() if torch.is_tensor(edges) else edges)
+        # One trace for every segment would be slow; None-separated points give a single
+        # trace that Plotly draws as disconnected lines.
+        seg = np.full((3 * e.shape[1], 3), np.nan)
+        seg[0::3], seg[1::3] = pos[e[0]], pos[e[1]]
+        fig.add_trace(
+            go.Scatter3d(x=seg[:, 0], y=seg[:, 1], z=seg[:, 2], mode="lines",
+                         line=dict(color=edge_color, width=2), hoverinfo="skip",
+                         showlegend=False),
+            row=row, col=col,
+        )
+
+    fig.add_trace(
+        go.Scatter3d(
+            x=pos[:, 0], y=pos[:, 1], z=pos[:, 2], mode="markers",
+            marker=dict(size=size, color=_css(color), symbol=symbol, line=dict(width=0)),
+            name=label or "", showlegend=label is not None,
+            hovertemplate="(%{x:.2f}, %{y:.2f}, %{z:.2f})<extra></extra>",
+        ),
+        row=row, col=col,
+    )
+    return fig
+
+
+def draw_sphere_field(vals, xyz, fig=None, cell=(1, 1), vmax: float | None = None,
+                      colorscale: str = "RdBu", stride: int = 1):
+    """Any scalar field on the sphere: radius = |f|, surface colour = signed value.
+
+    ``vals`` is ``(n, n)`` (or flat) on the grid returned by :func:`spherical_surface`.
+    ``stride`` decimates the grid before it is serialized -- every point ships to the
+    browser as JSON, so a fine grid is worth far more in file size than in appearance.
+    """
+    import plotly.graph_objects as go
+
+    if fig is None:
+        fig = scene3d()
+    vals = _as_array(vals).reshape(xyz.shape[:2])
+    if stride > 1:
+        vals, xyz = vals[::stride, ::stride], xyz[::stride, ::stride]
+    surf = np.abs(vals)[..., None] * xyz
+    lim = float(vmax if vmax is not None else (np.abs(vals).max() or 1.0))
+
+    row, col = cell
+    fig.add_trace(
+        go.Surface(x=surf[..., 0], y=surf[..., 1], z=surf[..., 2],
+                   surfacecolor=vals, colorscale=colorscale,
+                   cmin=-lim, cmax=lim, showscale=False, hoverinfo="skip"),
+        row=row, col=col,
+    )
+    return fig
+
+
+def draw_spherical_harmonic(l: int, m: int, fig=None, cell=(1, 1), n: int = 80,
+                            colorscale: str = "RdBu"):
+    """Interactive ``Y_l^m``: radius = |Y|, surface colour = sign."""
+    _, _, xyz = spherical_surface(n)
+    Y = o3.spherical_harmonics(l, torch.from_numpy(xyz.reshape(-1, 3)),
+                               normalize=True, normalization="component")
+    vals = Y[:, l + m].reshape(xyz.shape[:2]).numpy()
+    return draw_sphere_field(vals, xyz, fig=fig, cell=cell, colorscale=colorscale)
+
+
+def show3d(fig, title: str | None = None, axes: bool = False, legend: bool = True,
+           aspect: str = "data"):
+    """Finish a ``scene3d`` figure and display it as a live, self-contained widget.
+
+    Displays rather than returns, so the figure appears wherever the call sits in the cell
+    -- not only when it happens to be the final expression.
+    """
+    from IPython.display import HTML, display
+
+    n = getattr(fig, "_course_rows", 1) * getattr(fig, "_course_cols", 1)
+    axis = dict(visible=axes, showbackground=False)
+    fig.update_layout(
+        title=title,
+        margin=dict(l=0, r=0, t=48 if title else 16, b=0),
+        showlegend=legend,
+        legend=dict(orientation="h", yanchor="bottom", y=-0.06, x=0),
+        template="plotly_white",
+    )
+    for i in range(1, n + 1):
+        fig.update_layout(**{
+            f"scene{i}" if i > 1 else "scene":
+                dict(xaxis=axis, yaxis=axis, zaxis=axis, aspectmode=aspect)
+        })
+    # include_plotlyjs="cdn" keeps the notebook small while staying self-describing, so the
+    # figure is live in Jupyter and on the built page alike.
+    # responsive=True makes Plotly size the SVG to its container and re-fit on resize;
+    # without it the figure keeps whatever width it was first laid out at and spills out
+    # of the output box.
+    display(HTML(fig.to_html(include_plotlyjs="cdn", full_html=False,
+                             default_width="100%",
+                             config={"displaylogo": False, "responsive": True})))

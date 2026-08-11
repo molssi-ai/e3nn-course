@@ -1,0 +1,306 @@
+% Bibliography for "Equivariant Graph Neural Networks with e3nn".
+%
+% Rendered in full on the Bibliography page via ``{bibliography}`` with ``:all:``, so an
+% entry does not need a ``{cite}`` reference anywhere to appear. Grouped commentary on
+% these works lives in book/further-reading.md.
+%
+% Braces around capitalised words protect them from the bibliography style's lowercasing.
+
+% ---------------------------------------------------------------------------
+% Equivariant architectures: foundations
+% ---------------------------------------------------------------------------
+
+@article{geiger2022e3nn,
+  author  = {Geiger, Mario and Smidt, Tess},
+  title   = {{e3nn}: {E}uclidean {N}eural {N}etworks},
+  journal = {arXiv preprint arXiv:2207.09453},
+  year    = {2022},
+  url     = {https://arxiv.org/abs/2207.09453}
+}
+
+@article{thomas2018tfn,
+  author  = {Thomas, Nathaniel and Smidt, Tess and Kearnes, Steven and Yang, Lusann and
+             Li, Li and Kohlhoff, Kai and Riley, Patrick},
+  title   = {Tensor field networks: {R}otation- and translation-equivariant neural
+             networks for {3D} point clouds},
+  journal = {arXiv preprint arXiv:1802.08219},
+  year    = {2018},
+  url     = {https://arxiv.org/abs/1802.08219}
+}
+
+@inproceedings{weiler20183dsteerable,
+  author    = {Weiler, Maurice and Geiger, Mario and Welling, Max and Boomsma, Wouter and
+               Cohen, Taco},
+  title     = {{3D} steerable {CNNs}: {L}earning rotationally equivariant features in
+               volumetric data},
+  booktitle = {Advances in Neural Information Processing Systems},
+  year      = {2018}
+}
+
+@article{battaglia2018relational,
+  author  = {Battaglia, Peter W. and Hamrick, Jessica B. and Bapst, Victor and others},
+  title   = {Relational inductive biases, deep learning, and graph networks},
+  journal = {arXiv preprint arXiv:1806.01261},
+  year    = {2018},
+  url     = {https://arxiv.org/abs/1806.01261}
+}
+
+@inproceedings{fuchs2020se3transformers,
+  author    = {Fuchs, Fabian B. and Worrall, Daniel E. and Fischer, Volker and
+               Welling, Max},
+  title     = {{SE(3)}-{T}ransformers: {3D} roto-translation equivariant attention
+               networks},
+  booktitle = {Advances in Neural Information Processing Systems},
+  year      = {2020}
+}
+
+@inproceedings{anderson2019cormorant,
+  author    = {Anderson, Brandon and Hy, Truong Son and Kondor, Risi},
+  title     = {Cormorant: {C}ovariant molecular neural networks},
+  booktitle = {Advances in Neural Information Processing Systems},
+  year      = {2019}
+}
+
+@inproceedings{liao2023equiformer,
+  author    = {Liao, Yi-Lun and Smidt, Tess},
+  title     = {Equiformer: {E}quivariant graph attention transformer for {3D} atomistic
+               graphs},
+  booktitle = {International Conference on Learning Representations},
+  year      = {2023},
+  url       = {https://arxiv.org/abs/2206.11990}
+}
+
+% ---------------------------------------------------------------------------
+% Invariant baselines
+% ---------------------------------------------------------------------------
+
+@inproceedings{schutt2017schnet,
+  author    = {Sch{\"u}tt, Kristof T. and Kindermans, Pieter-Jan and
+               Sauceda, Huziel E. and Chmiela, Stefan and Tkatchenko, Alexandre and
+               M{\"u}ller, Klaus-Robert},
+  title     = {{SchNet}: {A} continuous-filter convolutional neural network for modeling
+               quantum interactions},
+  booktitle = {Advances in Neural Information Processing Systems},
+  year      = {2017}
+}
+
+@inproceedings{gasteiger2020dimenet,
+  author    = {Gasteiger, Johannes and Gro{\ss}, Janek and G{\"u}nnemann, Stephan},
+  title     = {Directional message passing for molecular graphs},
+  booktitle = {International Conference on Learning Representations},
+  year      = {2020}
+}
+
+@article{gasteiger2020dimenetpp,
+  author  = {Gasteiger, Johannes and Giri, Shankari and Margraf, Johannes T. and
+             G{\"u}nnemann, Stephan},
+  title   = {Fast and uncertainty-aware directional message passing for
+             non-equilibrium molecules},
+  journal = {arXiv preprint arXiv:2011.14115},
+  year    = {2020},
+  url     = {https://arxiv.org/abs/2011.14115}
+}
+
+% ---------------------------------------------------------------------------
+% State-of-the-art equivariant interatomic potentials
+% ---------------------------------------------------------------------------
+
+@article{batzner2022nequip,
+  author  = {Batzner, Simon and Musaelian, Albert and Sun, Lixin and Geiger, Mario and
+             Mailoa, Jonathan P. and Kornbluth, Mordechai and Molinari, Nicola and
+             Smidt, Tess E. and Kozinsky, Boris},
+  title   = {{E(3)}-equivariant graph neural networks for data-efficient and accurate
+             interatomic potentials},
+  journal = {Nature Communications},
+  volume  = {13},
+  pages   = {2453},
+  year    = {2022},
+  doi     = {10.1038/s41467-022-29939-5}
+}
+
+@article{musaelian2023allegro,
+  author  = {Musaelian, Albert and Batzner, Simon and Johansson, Anders and Sun, Lixin and
+             Owen, Cameron J. and Kornbluth, Mordechai and Kozinsky, Boris},
+  title   = {Learning local equivariant representations for large-scale atomistic
+             dynamics},
+  journal = {Nature Communications},
+  volume  = {14},
+  pages   = {579},
+  year    = {2023},
+  doi     = {10.1038/s41467-023-36329-y}
+}
+
+@inproceedings{batatia2022mace,
+  author    = {Batatia, Ilyes and Kov{\'a}cs, D{\'a}vid P{\'e}ter and
+               Simm, Gregor N. C. and Ortner, Christoph and Cs{\'a}nyi, G{\'a}bor},
+  title     = {{MACE}: {H}igher order equivariant message passing neural networks for
+               fast and accurate force fields},
+  booktitle = {Advances in Neural Information Processing Systems},
+  year      = {2022}
+}
+
+@article{batatia2022designspace,
+  author  = {Batatia, Ilyes and Batzner, Simon and Kov{\'a}cs, D{\'a}vid P{\'e}ter and
+             others},
+  title   = {The design space of {E(3)}-equivariant atom-centred interatomic potentials},
+  journal = {arXiv preprint arXiv:2205.06643},
+  year    = {2022},
+  url     = {https://arxiv.org/abs/2205.06643}
+}
+
+@article{batatia2025designspace,
+  author  = {Batatia, Ilyes and Batzner, Simon and Kov{\'a}cs, D{\'a}vid P{\'e}ter and
+             others},
+  title   = {The design space of {E(3)}-equivariant atom-centred interatomic potentials},
+  journal = {Nature Machine Intelligence},
+  volume  = {7},
+  pages   = {56},
+  year    = {2025},
+  doi     = {10.1038/s42256-024-00956-x}
+}
+
+@article{kovacs2023mace,
+  author  = {Kov{\'a}cs, D{\'a}vid P{\'e}ter and Batatia, Ilyes and Arany, Eszter S. and
+             Cs{\'a}nyi, G{\'a}bor},
+  title   = {Evaluation of the {MACE} force field architecture: {F}rom medicinal
+             chemistry to materials science},
+  journal = {The Journal of Chemical Physics},
+  volume  = {159},
+  pages   = {044118},
+  year    = {2023},
+  doi     = {10.1063/5.0155322}
+}
+
+@article{kovacs2025maceoff,
+  author  = {Kov{\'a}cs, D{\'a}vid P{\'e}ter and Moore, J. Harry and
+             Browning, Nicholas J. and others},
+  title   = {{MACE-OFF}: {T}ransferable short range machine learning force fields for
+             organic molecules},
+  journal = {Journal of the American Chemical Society},
+  volume  = {147},
+  pages   = {17598},
+  year    = {2025},
+  doi     = {10.1021/jacs.4c07099}
+}
+
+@article{batatia2024foundation,
+  author  = {Batatia, Ilyes and Benner, Philipp and Chiang, Yuan and others},
+  title   = {A foundation model for atomistic materials chemistry},
+  journal = {arXiv preprint arXiv:2401.00096},
+  year    = {2024},
+  url     = {https://arxiv.org/abs/2401.00096}
+}
+
+% ---------------------------------------------------------------------------
+% Atomic cluster expansion and body-order theory
+% ---------------------------------------------------------------------------
+
+@article{drautz2019ace,
+  author  = {Drautz, Ralf},
+  title   = {Atomic cluster expansion for accurate and transferable interatomic
+             potentials},
+  journal = {Physical Review B},
+  volume  = {99},
+  pages   = {014104},
+  year    = {2019},
+  doi     = {10.1103/PhysRevB.99.014104}
+}
+
+@article{dusson2022ace,
+  author  = {Dusson, Genevi{\`e}ve and Bachmayr, Markus and Cs{\'a}nyi, G{\'a}bor and
+             Drautz, Ralf and Etter, Simon and van der Oord, Cas and Ortner, Christoph},
+  title   = {Atomic cluster expansion: {C}ompleteness, efficiency and stability},
+  journal = {Journal of Computational Physics},
+  volume  = {454},
+  pages   = {110946},
+  year    = {2022},
+  doi     = {10.1016/j.jcp.2022.110946}
+}
+
+@article{nigam2022unified,
+  author  = {Nigam, Jigyasa and Pozdnyakov, Sergey and Fraux, Guillaume and
+             Ceriotti, Michele},
+  title   = {Unified theory of atom-centered representations and message-passing
+             machine-learning schemes},
+  journal = {The Journal of Chemical Physics},
+  volume  = {156},
+  pages   = {204115},
+  year    = {2022},
+  doi     = {10.1063/5.0087042}
+}
+
+@article{pozdnyakov2022incompleteness,
+  author  = {Pozdnyakov, Sergey N. and Ceriotti, Michele},
+  title   = {Incompleteness of graph neural networks for points clouds in three
+             dimensions},
+  journal = {arXiv preprint arXiv:2201.07136},
+  year    = {2022},
+  url     = {https://arxiv.org/abs/2201.07136}
+}
+
+@article{chong2026bodyorder,
+  author  = {Chong, Sanggyu and others},
+  title   = {Resolving the body-order paradox of machine-learned interatomic potentials},
+  journal = {The Journal of Chemical Physics},
+  volume  = {164},
+  pages   = {064121},
+  year    = {2026},
+  doi     = {10.1063/5.0303302}
+}
+
+% ---------------------------------------------------------------------------
+% Long-range interactions
+% ---------------------------------------------------------------------------
+
+@article{grisafi2019longrange,
+  author  = {Grisafi, Andrea and Ceriotti, Michele},
+  title   = {Incorporating long-range physics in atomic-scale machine learning},
+  journal = {The Journal of Chemical Physics},
+  volume  = {151},
+  pages   = {204105},
+  year    = {2019},
+  doi     = {10.1063/1.5128375}
+}
+
+@inproceedings{kosmala2023ewald,
+  author    = {Kosmala, Arthur and Gasteiger, Johannes and Gao, Nicholas and
+               G{\"u}nnemann, Stephan},
+  title     = {Ewald-based long-range message passing for molecular graphs},
+  booktitle = {Proceedings of the 40th International Conference on Machine Learning},
+  volume    = {202},
+  pages     = {17544},
+  year      = {2023},
+  url       = {https://proceedings.mlr.press/v202/kosmala23a.html}
+}
+
+@article{cheng2025latentewald,
+  author  = {Cheng, Bingqing},
+  title   = {Latent {E}wald summation for machine learning of long-range interactions},
+  journal = {npj Computational Materials},
+  volume  = {11},
+  pages   = {80},
+  year    = {2025},
+  doi     = {10.1038/s41524-025-01577-7}
+}
+
+@article{kolafa1992ewald,
+  author  = {Kolafa, Ji{\v r}{\'\i} and Perram, John W.},
+  title   = {Cutoff errors in the {E}wald summation formulae for point charge systems},
+  journal = {Molecular Simulation},
+  volume  = {9},
+  pages   = {351},
+  year    = {1992},
+  doi     = {10.1080/08927029208049126}
+}
+
+@article{grisafi2018symmetryadapted,
+  author  = {Grisafi, Andrea and Wilkins, David M. and Cs{\'a}nyi, G{\'a}bor and
+             Ceriotti, Michele},
+  title   = {Symmetry-adapted machine learning for tensorial properties of atomistic
+             systems},
+  journal = {Physical Review Letters},
+  volume  = {120},
+  pages   = {036002},
+  year    = {2018},
+  doi     = {10.1103/PhysRevLett.120.036002}
+}

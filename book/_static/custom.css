@@ -1,0 +1,443 @@
+/* ==========================================================================
+   e3nn course — theme overrides for sphinx-book-theme 1.3 / pydata-sphinx-theme
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. Palette
+   -------------------------------------------------------------------------- */
+
+:root {
+  --c-red: #ed1c24;
+  --c-ink: #393536;
+  --c-grey: #666666;
+  --c-white: #ffffff;
+
+  /* Darkened/lightened reds for text-sized links, which need 4.5:1 contrast;
+     --c-red itself measures 4.38:1 on white so it is reserved for rules,
+     accents and active states (3:1). */
+  --c-red-link: #c8161d;
+  --c-red-link-hover: #a3121a;
+  --c-red-tint: #f4696e;
+  --c-red-tint-hover: #ff8a8f;
+
+  --c-red-wash: rgba(237, 28, 36, 0.08);
+  --c-red-wash-strong: rgba(237, 28, 36, 0.16);
+}
+
+/* --------------------------------------------------------------------------
+   2. Theme tokens
+   --------------------------------------------------------------------------
+   `data-theme` is stamped on <html> by the theme's JS at runtime, so it is
+   absent in the served markup. The light values therefore also cover
+   `html:not([data-theme])` — matching how pydata-sphinx-theme scopes its own
+   tokens — otherwise the palette would not apply until JS ran, or at all
+   without it.
+   -------------------------------------------------------------------------- */
+
+html:not([data-theme]),
+html[data-theme="light"] {
+  --pst-color-primary: var(--c-red-link);
+  --pst-color-primary-highlight: var(--c-red-link-hover);
+  --pst-color-primary-bg: var(--c-red-wash);
+
+  --pst-color-secondary: var(--c-ink);
+  --pst-color-secondary-highlight: #211f20;
+
+  --pst-color-accent: var(--c-red);
+  --pst-color-accent-bg: var(--c-red-wash);
+
+  --pst-color-link: var(--c-red-link);
+  --pst-color-link-hover: var(--c-red-link-hover);
+
+  --pst-color-inline-code: var(--c-red-link);
+  --pst-color-inline-code-links: var(--c-red-link-hover);
+
+  --pst-color-text-base: var(--c-ink);
+  --pst-color-heading-color: var(--c-ink);
+  --pst-color-text-muted: var(--c-grey);
+
+  --pst-color-target: var(--c-red-wash-strong);
+}
+
+html[data-theme="dark"] {
+  --pst-color-primary: var(--c-red-tint);
+  --pst-color-primary-highlight: var(--c-red-tint-hover);
+  --pst-color-primary-bg: rgba(244, 105, 110, 0.14);
+
+  --pst-color-secondary: #d8d4d5;
+  --pst-color-secondary-highlight: #efecec;
+
+  --pst-color-accent: var(--c-red-tint);
+  --pst-color-accent-bg: rgba(244, 105, 110, 0.14);
+
+  --pst-color-link: var(--c-red-tint);
+  --pst-color-link-hover: var(--c-red-tint-hover);
+
+  --pst-color-inline-code: var(--c-red-tint);
+  --pst-color-inline-code-links: var(--c-red-tint-hover);
+
+  --pst-color-target: rgba(244, 105, 110, 0.22);
+}
+
+/* --------------------------------------------------------------------------
+   3. Logo
+   -------------------------------------------------------------------------- */
+
+.navbar-brand img,
+img.logo__image {
+  max-height: 4.6rem;
+  width: auto;
+}
+
+/* Dark artwork on a transparent field needs a light plate on the dark theme. */
+html[data-theme="dark"] .navbar-brand img,
+html[data-theme="dark"] img.logo__image {
+  background-color: var(--c-white);
+  border-radius: 0.5rem;
+  padding: 0.4rem 0.55rem;
+  box-sizing: border-box;
+}
+
+/* --------------------------------------------------------------------------
+   4. Typography
+   -------------------------------------------------------------------------- */
+
+:root {
+  --pst-font-family-heading: "Helvetica Neue", Helvetica, Arial,
+    "Segoe UI", system-ui, -apple-system, sans-serif;
+  --pst-font-family-base: system-ui, -apple-system, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6,
+.bd-article h1, .bd-article h2, .bd-article h3 {
+  font-family: var(--pst-font-family-heading);
+  letter-spacing: -0.01em;
+  font-weight: 700;
+}
+
+/* --------------------------------------------------------------------------
+   5. Accents
+   -------------------------------------------------------------------------- */
+
+.bd-article > section > h1 {
+  padding-bottom: 0.4rem;
+  border-bottom: 3px solid var(--c-red);
+}
+
+.bd-article h2 {
+  padding-bottom: 0.25rem;
+  border-bottom: 1px solid var(--pst-color-border);
+}
+
+.bd-sidebar-primary nav.bd-links li > a:hover {
+  color: var(--pst-color-link-hover);
+}
+
+.bd-sidebar-primary nav.bd-links .current > a,
+.bd-sidebar-primary nav.bd-links a.current {
+  color: var(--pst-color-link);
+  font-weight: 600;
+  border-left: 3px solid var(--c-red);
+  padding-left: 0.6rem;
+}
+
+.bd-header-announcement {
+  background-color: var(--c-ink);
+  color: var(--c-white);
+  border-bottom: 3px solid var(--c-red);
+  font-size: 0.85rem;
+}
+
+.bd-header-announcement a {
+  color: var(--c-white);
+  text-decoration: underline;
+}
+
+.admonition,
+div.admonition {
+  border-radius: 0.4rem;
+}
+
+.exercise,
+.solution,
+.proof,
+div.proof {
+  border-radius: 0.4rem;
+  box-shadow: 0 0.15rem 0.4rem rgba(57, 53, 54, 0.1);
+}
+
+/* Collapsible <details> used for exercise solutions in the notebooks. */
+.bd-article details {
+  border: 1px solid var(--pst-color-border);
+  border-left: 3px solid var(--c-red);
+  border-radius: 0.4rem;
+  padding: 0.5rem 0.9rem;
+  margin: 1rem 0;
+  background-color: var(--pst-color-surface);
+}
+
+.bd-article details > summary {
+  cursor: pointer;
+  font-weight: 600;
+  color: var(--pst-color-link);
+}
+
+.bd-article details[open] > summary {
+  margin-bottom: 0.6rem;
+  border-bottom: 1px solid var(--pst-color-border);
+  padding-bottom: 0.4rem;
+}
+
+.sd-card {
+  border-radius: 0.5rem;
+  border-top: 3px solid transparent;
+  transition: transform 0.12s ease, box-shadow 0.12s ease, border-color 0.12s ease;
+}
+
+.sd-card:hover {
+  transform: translateY(-2px);
+  border-top-color: var(--c-red);
+  box-shadow: 0 0.4rem 1rem rgba(57, 53, 54, 0.16);
+}
+
+.sd-card-title {
+  font-family: var(--pst-font-family-heading);
+  font-weight: 650;
+}
+
+.bd-article blockquote {
+  border-left: 3px solid var(--c-red);
+  padding-left: 1rem;
+  color: var(--pst-color-text-muted);
+}
+
+/* --------------------------------------------------------------------------
+   6. Wide-screen layout
+   --------------------------------------------------------------------------
+   The stock book theme caps content at ~800px, which squeezes equations,
+   three-column irrep tables and the interactive 3D figures.
+   -------------------------------------------------------------------------- */
+
+:root {
+  --e3nn-content-width: clamp(45rem, 82vw, 100rem);
+  --e3nn-page-width: clamp(60rem, 98vw, 132rem);
+  --e3nn-sidebar-width: 17rem;
+  --e3nn-sidebar-collapsed: 4rem;
+  --e3nn-toc-width: 15rem;
+}
+
+.bd-page-width,
+.bd-container,
+.bd-header .bd-header__inner,
+.bd-footer .bd-footer__inner,
+.bd-footer-article {
+  max-width: var(--e3nn-page-width) !important;
+}
+
+.bd-main .bd-content,
+.bd-article-container,
+.bd-content .bd-article-container {
+  max-width: var(--e3nn-content-width) !important;
+  width: 100%;
+}
+
+.bd-article,
+.bd-content article,
+div.bd-article-container > article {
+  max-width: none !important;
+}
+
+/* Fix the sidebars so the extra width goes to content, not split three ways. */
+@media (min-width: 960px) {
+  .bd-sidebar-primary {
+    flex: 0 0 var(--e3nn-sidebar-width);
+    max-width: var(--e3nn-sidebar-width);
+    /* The Collapse Sidebar button works by adding .pst-squeeze, whose `width: 4rem`
+       a flex-basis would override -- so the collapsed size has to be expressed in the
+       same properties used above. The transition is what the theme's JavaScript waits
+       on (transitionend) before it will accept another click. */
+    transition: flex-basis 0.4s ease, max-width 0.4s ease;
+  }
+  .bd-sidebar-primary.pst-squeeze {
+    flex-basis: var(--e3nn-sidebar-collapsed);
+    max-width: var(--e3nn-sidebar-collapsed);
+  }
+  /* Collapsing has to hand the reclaimed space to the article, otherwise the sidebar
+     shrinks and the content just re-centres. The content cap is read from this variable,
+     so widening it here is enough -- no need to restate the max-width rules. */
+  .bd-sidebar-primary.pst-squeeze ~ .bd-main {
+    --e3nn-content-width: clamp(45rem, 96vw, 120rem);
+  }
+  .bd-sidebar-secondary {
+    flex: 0 0 var(--e3nn-toc-width);
+    max-width: var(--e3nn-toc-width);
+  }
+  /* On a short window the theme scrolls the sidebar to bring the current page's nav entry
+     into view, which carries the Collapse button off the top. Pinning the button itself
+     does not work -- the theme sets `position: relative` on it with a stronger selector --
+     so pin the wrapper, which has the whole scrolled column to travel within. */
+  .bd-sidebar-primary .sidebar-primary-item.pst-sidebar-collapse {
+    position: sticky;
+    top: 0;
+    z-index: 3;
+    background-color: var(--pst-color-background);
+    /* The pinned wrapper comes to rest a padding's width below the top of the scrolling
+       area, so nav entries would show through the strip above it. A solid shadow paints
+       that strip in the same colour; anything past the top edge is clipped away. */
+    box-shadow: 0 -1rem 0 var(--pst-color-background);
+  }
+}
+
+/* Prose flows to the same width as the tables, figures and equations beside it, so
+   paragraphs are not left wrapping short against full-width content. */
+@media (min-width: 1600px) {
+  .bd-article > section > p,
+  .bd-article > section > ul,
+  .bd-article > section > ol,
+  .bd-article > section > dl,
+  .bd-article > section > blockquote,
+  .bd-article > section > section > p,
+  .bd-article > section > section > ul,
+  .bd-article > section > section > ol,
+  .bd-article > section > section > dl,
+  .bd-article > section > section > blockquote {
+    max-width: none;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   7. Wide block content: nothing may break the page horizontally
+   -------------------------------------------------------------------------- */
+
+.cell_output,
+.cell_output .output,
+div.output_area {
+  max-width: 100%;
+  overflow-x: auto;
+}
+
+.cell_output table,
+table.dataframe {
+  display: block;
+  max-width: 100%;
+  overflow-x: auto;
+  white-space: nowrap;
+}
+
+.cell_output img,
+.bd-article img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Plotly figures are embedded as text/html — let them be fluid. */
+.cell_output .plotly-graph-div,
+.cell_output .js-plotly-plot {
+  width: 100% !important;
+  max-width: 100%;
+}
+
+/* Long unbroken equations scroll rather than overflow. */
+.MathJax_Display,
+mjx-container[jax="CHTML"][display="true"] {
+  overflow-x: auto;
+  overflow-y: hidden;
+  max-width: 100%;
+  padding: 0.2rem 0;
+}
+
+table.docutils {
+  width: auto;
+  max-width: 100%;
+}
+
+/* --------------------------------------------------------------------------
+   8. Code cells and math
+   -------------------------------------------------------------------------- */
+
+div.highlight pre,
+.cell_input pre {
+  font-size: 0.86rem;
+  line-height: 1.5;
+}
+
+.cell {
+  margin-bottom: 1.35rem;
+}
+
+.cell .cell_input div.highlight {
+  border-left: 3px solid var(--c-red);
+  border-radius: 0 0.25rem 0.25rem 0;
+}
+
+/* Scrollable long outputs (training logs) instead of endless pages. */
+.cell_output > .output > .highlight pre,
+.cell_output pre {
+  max-height: 32rem;
+  overflow-y: auto;
+}
+
+mjx-container[display="true"] {
+  margin: 1.1em 0;
+}
+
+.eqno {
+  float: right;
+  margin-left: 1rem;
+  color: var(--pst-color-text-muted);
+}
+
+.bd-article > section > h1:first-child {
+  margin-top: 0.4rem;
+}
+
+button.toggle-button {
+  z-index: 2;
+}
+
+/* >>> vscode-code-colors */
+/* Code block colours modelled on VS Code's default Light+ / Dark+ themes. */
+html[data-theme="light"] .highlight, html[data-theme="light"] .highlight pre { background-color: #ffffff; color: #000000; }
+html[data-theme="light"] .highlight .c, html[data-theme="light"] .highlight .ch, html[data-theme="light"] .highlight .cm, html[data-theme="light"] .highlight .cp, html[data-theme="light"] .highlight .cpf, html[data-theme="light"] .highlight .c1, html[data-theme="light"] .highlight .cs { color: #008000; font-style: italic; }
+html[data-theme="light"] .highlight .k, html[data-theme="light"] .highlight .kc, html[data-theme="light"] .highlight .kd, html[data-theme="light"] .highlight .kn, html[data-theme="light"] .highlight .kp, html[data-theme="light"] .highlight .kr, html[data-theme="light"] .highlight .ow, html[data-theme="light"] .highlight .bp { color: #0000ff; }
+html[data-theme="light"] .highlight .kt, html[data-theme="light"] .highlight .nc, html[data-theme="light"] .highlight .nn, html[data-theme="light"] .highlight .ne, html[data-theme="light"] .highlight .nl { color: #267f99; }
+html[data-theme="light"] .highlight .s, html[data-theme="light"] .highlight .sa, html[data-theme="light"] .highlight .sb, html[data-theme="light"] .highlight .sc, html[data-theme="light"] .highlight .dl, html[data-theme="light"] .highlight .sd, html[data-theme="light"] .highlight .s2, html[data-theme="light"] .highlight .sh, html[data-theme="light"] .highlight .si, html[data-theme="light"] .highlight .sx, html[data-theme="light"] .highlight .sr, html[data-theme="light"] .highlight .s1, html[data-theme="light"] .highlight .ss { color: #a31515; }
+html[data-theme="light"] .highlight .se { color: #ee0000; }
+html[data-theme="light"] .highlight .m, html[data-theme="light"] .highlight .mb, html[data-theme="light"] .highlight .mf, html[data-theme="light"] .highlight .mh, html[data-theme="light"] .highlight .mi, html[data-theme="light"] .highlight .mo, html[data-theme="light"] .highlight .il { color: #098658; }
+html[data-theme="light"] .highlight .nf, html[data-theme="light"] .highlight .fm, html[data-theme="light"] .highlight .nd { color: #795e26; }
+html[data-theme="light"] .highlight .na, html[data-theme="light"] .highlight .nv, html[data-theme="light"] .highlight .vc, html[data-theme="light"] .highlight .vg, html[data-theme="light"] .highlight .vi, html[data-theme="light"] .highlight .vm, html[data-theme="light"] .highlight .py { color: #001080; }
+html[data-theme="light"] .highlight .o, html[data-theme="light"] .highlight .p { color: #000000; }
+html[data-theme="light"] .highlight .err { color: #cd3131; }
+html[data-theme="light"] .highlight .k, html[data-theme="light"] .highlight .kd, html[data-theme="light"] .highlight .kr, html[data-theme="light"] .highlight .kn { font-weight: normal; }
+
+html[data-theme="dark"] .highlight, html[data-theme="dark"] .highlight pre { background-color: #1f1f1f; color: #d4d4d4; }
+html[data-theme="dark"] .highlight .c, html[data-theme="dark"] .highlight .ch, html[data-theme="dark"] .highlight .cm, html[data-theme="dark"] .highlight .cp, html[data-theme="dark"] .highlight .cpf, html[data-theme="dark"] .highlight .c1, html[data-theme="dark"] .highlight .cs { color: #6a9955; font-style: italic; }
+html[data-theme="dark"] .highlight .k, html[data-theme="dark"] .highlight .kc, html[data-theme="dark"] .highlight .kd, html[data-theme="dark"] .highlight .kn, html[data-theme="dark"] .highlight .kp, html[data-theme="dark"] .highlight .kr, html[data-theme="dark"] .highlight .ow, html[data-theme="dark"] .highlight .bp { color: #569cd6; }
+html[data-theme="dark"] .highlight .kt, html[data-theme="dark"] .highlight .nc, html[data-theme="dark"] .highlight .nn, html[data-theme="dark"] .highlight .ne, html[data-theme="dark"] .highlight .nl { color: #4ec9b0; }
+html[data-theme="dark"] .highlight .s, html[data-theme="dark"] .highlight .sa, html[data-theme="dark"] .highlight .sb, html[data-theme="dark"] .highlight .sc, html[data-theme="dark"] .highlight .dl, html[data-theme="dark"] .highlight .sd, html[data-theme="dark"] .highlight .s2, html[data-theme="dark"] .highlight .sh, html[data-theme="dark"] .highlight .si, html[data-theme="dark"] .highlight .sx, html[data-theme="dark"] .highlight .sr, html[data-theme="dark"] .highlight .s1, html[data-theme="dark"] .highlight .ss { color: #ce9178; }
+html[data-theme="dark"] .highlight .se { color: #d7ba7d; }
+html[data-theme="dark"] .highlight .m, html[data-theme="dark"] .highlight .mb, html[data-theme="dark"] .highlight .mf, html[data-theme="dark"] .highlight .mh, html[data-theme="dark"] .highlight .mi, html[data-theme="dark"] .highlight .mo, html[data-theme="dark"] .highlight .il { color: #b5cea8; }
+html[data-theme="dark"] .highlight .nf, html[data-theme="dark"] .highlight .fm, html[data-theme="dark"] .highlight .nd { color: #dcdcaa; }
+html[data-theme="dark"] .highlight .na, html[data-theme="dark"] .highlight .nv, html[data-theme="dark"] .highlight .vc, html[data-theme="dark"] .highlight .vg, html[data-theme="dark"] .highlight .vi, html[data-theme="dark"] .highlight .vm, html[data-theme="dark"] .highlight .py { color: #9cdcfe; }
+html[data-theme="dark"] .highlight .o, html[data-theme="dark"] .highlight .p { color: #d4d4d4; }
+html[data-theme="dark"] .highlight .err { color: #f44747; }
+html[data-theme="dark"] .highlight .k, html[data-theme="dark"] .highlight .kd, html[data-theme="dark"] .highlight .kr, html[data-theme="dark"] .highlight .kn { font-weight: normal; }
+/* <<< vscode-code-colors */
+
+/* Lessons listed on the curriculum page whose notebook is not published yet. They are
+   rendered as unlinked text by book/_ext/pending_lessons.py; this is what tells a reader
+   the missing link is intentional rather than broken. */
+.lesson-pending {
+  color: var(--pst-color-text-muted);
+}
+
+.lesson-pending-marker::before {
+  content: " · ";
+}
+
+.lesson-pending-marker {
+  font-size: 0.8em;
+  font-style: italic;
+  white-space: nowrap;
+}

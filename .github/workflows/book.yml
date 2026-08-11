@@ -1,0 +1,74 @@
+# Build the course book and publish it to GitHub Pages.
+#
+# The book renders the outputs committed inside each .ipynb (execute_notebooks: "off"), so
+# CI installs only book/requirements-docs.txt -- no torch, no e3nn, no GPU. Re-running the
+# lessons is a local, deliberate step (book/scripts/execute_notebooks.py), not something CI
+# does implicitly, because the outputs are a reviewed artifact.
+#
+# Publishes to https://molssi-ai.github.io/e3nn-course/ (html.baseurl in book/_config.yml).
+
+name: book
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+# Allow the deploy job to publish to Pages.
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Never let two deploys race; queue instead of cancelling a half-finished publish.
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+          cache: pip
+          cache-dependency-path: book/requirements-docs.txt
+
+      - name: Install the docs environment
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -r book/requirements-docs.txt
+
+      # Advisory, not blocking: an unexecuted cell publishes as code with no result, which
+      # is worth seeing in the log without failing an otherwise good docs change.
+      - name: Report unexecuted lesson cells
+        run: python book/scripts/check_outputs.py
+
+      - name: Build the book
+        run: |
+          jupyter-book build . \
+            --path-output book \
+            --config book/_config.yml \
+            --toc book/_toc.yml
+          test -f book/_build/html/index.html
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: book/_build/html
+
+  deploy:
+    # Only publish from main; pull requests build to verify, but must not deploy.
+    if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
