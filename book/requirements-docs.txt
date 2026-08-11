@@ -1,0 +1,19 @@
+# Environment for building the book -- deliberately does NOT include torch or e3nn.
+#
+# The book renders the outputs already stored in each .ipynb (`execute_notebooks: "off"`),
+# so the docs build stays small and fast. Use the project environment (`uv sync`) when you
+# want to *run* the lessons; use this one only to build the book.
+#
+#     uv venv --python 3.13 .venv-docs
+#     uv pip install --python .venv-docs/bin/python -r book/requirements-docs.txt
+#     make -C book html
+
+jupyter-book==1.0.4.post1
+
+# Directives used by the lessons: {exercise}/{solution} and {prf:theorem} etc.
+sphinx-exercise==1.2.1
+sphinx-proof==0.4.0
+
+# Bibliography page (book/references.bib) -- pinned explicitly because we configure
+# bibtex_reference_style / bibtex_default_style.
+sphinxcontrib-bibtex==2.7.0

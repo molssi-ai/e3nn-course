@@ -1,0 +1,34 @@
+# Table of contents for the e3nn course book.
+#
+# This lists the lessons that are published. Sphinx can only build files that exist, so
+# lessons still to come are not here -- the full twenty-one-lesson map lives on
+# book/curriculum.md, which links to every lesson and lights each link up as its notebook
+# lands (see book/_ext/pending_lessons.py). Adding a lesson means adding its notebook, then
+# adding one `- file:` line to the right part below.
+#
+# Docs: https://jupyterbook.org/customize/toc.html
+format: jb-book
+root: book/intro
+
+parts:
+  - caption: Getting Started
+    chapters:
+      - file: book/setup
+      - file: book/how-to-use
+      - file: book/curriculum
+
+  - caption: "Part I — Foundations: Symmetry, Irreps and Equivariant Operations"
+    numbered: true
+    chapters:
+      - file: notebooks/01a_symmetry_and_equivariance
+      - file: notebooks/01b_group_representations
+      - file: notebooks/02a_irreps_in_e3nn
+      - file: notebooks/02b_spherical_harmonics
+      - file: notebooks/03a_tensor_products_theory
+      - file: notebooks/03b_tensor_products_e3nn
+
+  - caption: Reference
+    chapters:
+      - file: book/further-reading
+      - file: book/bibliography
+      - file: book/style-guide

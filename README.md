@@ -50,28 +50,28 @@ We heavily rely on the following open-source packages packages: `torch`, `e3nn`,
 
 ```
 e3nn_course/
-├── README.md                 ← you are here
-├── STYLE_GUIDE.md            ← authoring conventions for all notebooks
-├── pyproject.toml / uv.lock  ← reproducible environment (uv)
-├── course_utils/             ← shared helpers imported by every notebook
-│   ├── equivariance.py       ← numerical equivariance test harness
-│   ├── plotting.py           ← spherical harmonics / irreps / training visualizations
-│   └── data.py               ← small datasets, neighbor lists, train/val splits
-├── notebooks/                ← the lessons (Parts I–V)
-└── papers/                   ← primary literature referenced throughout (see below)
+├── README.md                 <- you are here
+├── STYLE_GUIDE.md            <- authoring conventions for all notebooks
+├── pyproject.toml / uv.lock  <- reproducible environment (uv)
+├── course_utils/             <- shared helpers imported by every notebook
+│   ├── equivariance.py       <- numerical equivariance test harness
+│   ├── plotting.py           <- spherical harmonics / irreps / training visualizations
+│   └── data.py               <- small datasets, neighbor lists, train/val splits
+├── notebooks/                <- the lessons (Parts I-V)
+└── papers/                   <- primary literature referenced throughout (see below)
 ```
 
-## Curriculum Map
+## Curriculum at a Glance
 
-### Part I: Foundations- Symmetry, Irreps, and Equivariant Operations (Lessons 01–04)
+### Part I: Foundations: Symmetry, Irreps, and Equivariant Operations (Lessons 01-04)
 
 | Notebook | Topic |
 |---|---|
 | `01a_symmetry_and_equivariance.ipynb` | Why symmetry? Groups, E(3)/SE(3)/O(3), invariance vs. equivariance, why data augmentation is not enough. |
 | `01b_group_representations.ipynb` | Representations, reducibility, Schur's lemma in practice, Wigner D-matrices. |
-| `02a_irreps_in_e3nn.ipynb` | `e3nn.o3.Irreps`: the type system of equivariant networks — scalars `0e`, vectors `1o`, parity, direct sums. |
+| `02a_irreps_in_e3nn.ipynb` | `e3nn.o3.Irreps`: the type system of equivariant networks - scalars `0e`, vectors `1o`, parity, direct sums. |
 | `02b_spherical_harmonics.ipynb` | Spherical harmonics as the equivariant embedding of directions; visualization; `o3.spherical_harmonics`. |
-| `03a_tensor_products_theory.ipynb` | Coupling irreps: Clebsch–Gordan coefficients, selection rules, why the tensor product is *the* equivariant bilinear operation. |
+| `03a_tensor_products_theory.ipynb` | Coupling irreps: Clebsch-Gordan coefficients, selection rules, why the tensor product is *the* equivariant bilinear operation. |
 | `03b_tensor_products_e3nn.ipynb` | `o3.FullyConnectedTensorProduct` & friends: paths, weights, instructions dissected. |
 | `04_nonlinearities_and_gates.ipynb` | Equivariant nonlinearities: norm activations, `e3nn.nn.Gate`; building an equivariant MLP. |
 

@@ -1,0 +1,149 @@
+# Jupyter Book configuration for the e3nn course.
+#
+# The source directory is the repository root (so `notebooks/` and `course_utils/` keep
+# their real import paths), while the book's own files live under `book/`. Build with:
+#
+#     jupyter-book build . --path-output book \
+#         --config book/_config.yml --toc book/_toc.yml
+#
+# Docs: https://jupyterbook.org/customize/config.html
+
+title: "Equivariant Graph Neural Networks with e3nn: A Hands-On Course"
+author: Mohammad Mostafanejad
+copyright: "2026, The Molecular Sciences Software Institute"
+logo: book/_static/molssi-logo.png
+
+# Only build pages listed in _toc.yml -- keeps stray drafts out of the book.
+only_build_toc_files: true
+
+exclude_patterns:
+  - .venv
+  - .venv-docs
+  - README.md
+  - STYLE_GUIDE.md
+  - book/_build
+  - notebooks/artifacts
+
+# Notebooks ship with their committed outputs: what is in the .ipynb is what readers see.
+# `book/scripts/check_outputs.py` guards against publishing unexecuted cells.
+execute:
+  execute_notebooks: "off"
+  timeout: 1200
+  allow_errors: false
+
+parse:
+  myst_enable_extensions:
+    - amsmath
+    - colon_fence
+    - deflist
+    - dollarmath
+    - html_admonition
+    - html_image
+    - linkify
+    - replacements
+    - smartquotes
+    - substitution
+    - tasklist
+
+bibtex_bibfiles:
+  - book/references.bib
+
+repository:
+  url: https://github.com/molssi-ai/e3nn-course
+  branch: main
+  path_to_docs: ""
+
+html:
+  favicon: book/_static/favicon.png
+  baseurl: https://molssi-ai.github.io/e3nn-course/
+  use_issues_button: true
+  use_repository_button: true
+  use_edit_page_button: true
+  announcement: "This course is under active development — feedback and issues are very welcome."
+  extra_footer: |
+    <p>
+      Built with <a href="https://jupyterbook.org" target="_blank"
+        rel="noopener noreferrer">Jupyter Book</a> ·
+      Course material by <a href="https://molssi.org" target="_blank"
+        rel="noopener noreferrer">MolSSI</a>.
+    </p>
+
+sphinx:
+  # Merges in the sphinx-book-theme options Jupyter Book has no YAML key for, and fills
+  # html_context for use_edit_page_button. See book/_ext/theme_extras.py.
+  # Path is resolved relative to this file's directory (book/), not the source dir.
+  local_extensions:
+    theme_extras: _ext
+    external_links: _ext
+    sidebar_collapse: _ext
+    equation_numbers: _ext
+    pending_lessons: _ext
+  config:
+    # Listed in full rather than via `extra_extensions`, so the book loads exactly these
+    # and nothing else. Jupyter Book still appends sphinx_jupyterbook_latex and
+    # sphinx_multitoc_numbering after this override.
+    extensions:
+      - sphinx_togglebutton
+      - sphinx_copybutton
+      - myst_nb
+      - jupyter_book
+      - sphinx_comments
+      - sphinx_external_toc
+      - sphinx.ext.intersphinx
+      - sphinx_design
+      - sphinx_book_theme
+      - sphinx_exercise
+      - sphinx_proof
+      - theme_extras
+      - external_links
+      - sidebar_collapse
+      - equation_numbers
+      - pending_lessons
+      - sphinxcontrib.bibtex
+    # html_title is set from the top-level `title:` above -- do not override it here, or
+    # the browser-tab suffix and the LaTeX title drift away from the README title.
+    # sphinx-book-theme's own sidebar list, plus pydata-sphinx-theme's Collapse/Expand
+    # Sidebar button, which the book theme otherwise leaves out.
+    html_sidebars:
+      "**":
+        - sidebar-collapse.html
+        - navbar-logo.html
+        - icon-links.html
+        - search-button-field.html
+        - sbt-sidebar-nav.html
+    html_static_path:
+      - book/_static
+    html_css_files:
+      - custom.css
+    html_js_files:
+      - plotly-fit.js
+    # Number every display equation automatically, sequentially per page ((1), (2),
+    # ...) rather than per section, so the numbers match how the lessons refer to them.
+    math_number_all: true
+    math_numfig: false
+    bibtex_default_style: unsrt
+    bibtex_reference_style: author_year
+    nb_merge_streams: true
+    numfig: true
+    suppress_warnings:
+      - mystnb.unknown_mime_type
+      - epub.unknown_project_files
+    linkcheck_timeout: 20
+    linkcheck_ignore:
+      - https://molssi-ai\.github\.io/e3nn-course/.*
+      - https://mybinder\.org/.*
+      - https://colab\.research\.google\.com/.*
+    mathjax3_config:
+      tex:
+        macros:
+          Dmat: ['D^{(#1)}', 1]
+          Ylm: ['Y^{(#1)}_{#2}', 2]
+          rhat: '\hat{\mathbf{r}}'
+          rvec: ['\vec{r}_{#1}', 1]
+          irrep: ['(#1, #2)', 2]
+          CG: ['C^{(#1)}_{(#2)(#3)}', 3]
+          SOg: ['\mathrm{SO}(#1)', 1]
+          Og: ['\mathrm{O}(#1)', 1]
+          Eg: ['\mathrm{E}(#1)', 1]
+          RR: '\mathbb{R}'
+          tpw: '\otimes_{w}'
