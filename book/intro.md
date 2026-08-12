@@ -6,7 +6,9 @@ and working implementations of state-of-the-art invariant baseline models **SchN
 **DimeNet** and equivariant interatomic potentials such as **NequIP**, **Allegro**,
 and **MACE**.
 
-:::{admonition} Under active development :class: note Lessons are being written
+:::{admonition} Under active development 
+:class: note
+Lessons are being written
 and revised continuously. If something is unclear, wrong, or missing, please
 [open an issue](https://github.com/molssi-ai/e3nn-course/issues). Your feedback
 is important to us. 
@@ -43,10 +45,10 @@ notebooks that can be followed in one sitting, individually.
 ## What you will build
 
 By the end of the course, you will develop a working understanding of
-$E(3)$-equivariant models and the e3nn library, and will be able to implement:
+$\mathrm{E}(3)$-equivariant models and the e3nn library, and will be able to implement:
 
 - an equivariant point convolution (Tensor Field Networks) that passes a numerical
-  $\Og{3}$-equivariance test;
+  $\mathrm{O}(3)$-equivariance test;
 - a small equivariant GNN that classifies **chiral** 3D shapes: something no
   distance-only model can do;
 - **SchNet** and **DimeNet++** as invariant baselines, including a concrete
