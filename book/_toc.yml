@@ -26,6 +26,7 @@ parts:
       - file: notebooks/02b_spherical_harmonics
       - file: notebooks/03a_tensor_products_theory
       - file: notebooks/03b_tensor_products_e3nn
+      - file: notebooks/04_nonlinearities_and_gates
 
   - caption: Reference
     chapters:
