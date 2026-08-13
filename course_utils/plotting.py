@@ -136,9 +136,49 @@ def _css(color):
     return mcolors.to_hex(color)
 
 
+def shift_titles(fig, dy: float = 0.0, dx: float = 0.0, size: int | None = None):
+    """Move a figure's per-panel titles: ``dy > 0`` is up, ``dx > 0`` is right.
+
+    Plotly implements ``subplot_titles`` as annotations rather than as a property of each
+    scene, so they are repositioned after the fact. Both offsets are in paper coordinates:
+    the figure spans 0 to 1 in each direction, so 0.05 is five per cent of its width or
+    height.
+
+    Use a multi-line panel title (``"line one<br>line two"``) together with a small
+    negative ``dy`` when a long main title needs the room above.
+    """
+    for annotation in fig.layout.annotations:
+        annotation.update(x=annotation.x + dx, y=annotation.y + dy)
+        if size is not None:
+            annotation.update(font=dict(size=size))
+    return fig
+
+
+def _title_layout(fig, title: str, top: int, dx: float, dy: float) -> dict:
+    """The main title's layout, honouring the ``dx`` / ``dy`` offsets.
+
+    With no offsets we leave ``y`` unset so Plotly centres the title in the top margin.
+    Shifting needs a starting point, so we reproduce that centre ourselves -- half the top
+    margin down from the top of the figure -- and offset from there, measuring against the
+    container so the margin itself is included.
+    """
+    layout = dict(text=title, x=0.5 + dx, xanchor="center")
+    if dy:
+        height = fig.layout.height or 450
+        layout.update(y=(1.0 - (top / 2) / height) + dy, yanchor="middle",
+                      yref="container")
+    return layout
+
+
 def scene3d(rows: int = 1, cols: int = 1, titles=None, height: int | None = None,
-            spacing: float = 0.04):
-    """A Plotly figure of ``rows x cols`` 3D scenes, ready for the ``draw_*`` helpers."""
+            spacing: float = 0.04, title_dx: float = 0.0, title_dy: float = 0.0,
+            title_size: int | None = None):
+    """A Plotly figure of ``rows x cols`` 3D scenes, ready for the ``draw_*`` helpers.
+
+    ``title_shift`` nudges the panel titles vertically, in paper coordinates -- positive
+    moves them up, negative down. Break a long panel title with ``<br>``; a plain ``\\n``
+    is rendered as a space, not a line break.
+    """
     from plotly.subplots import make_subplots
 
     fig = make_subplots(
@@ -149,6 +189,8 @@ def scene3d(rows: int = 1, cols: int = 1, titles=None, height: int | None = None
     )
     fig._course_rows, fig._course_cols = rows, cols
     fig.update_layout(height=height or (360 * rows + 40))
+    if title_dx or title_dy or title_size is not None:
+        shift_titles(fig, title_dy, title_dx, title_size)
     return fig
 
 
@@ -226,21 +268,43 @@ def draw_spherical_harmonic(l: int, m: int, fig=None, cell=(1, 1), n: int = 80,
 
 
 def show3d(fig, title: str | None = None, axes: bool = False, legend: bool = True,
-           aspect: str = "data"):
+           aspect: str = "data", title_dx: float = 0.0, title_dy: float = 0.0,
+           panel_title_dx: float = 0.0, panel_title_dy: float | None = None):
     """Finish a ``scene3d`` figure and display it as a live, self-contained widget.
 
     Displays rather than returns, so the figure appears wherever the call sits in the cell
     -- not only when it happens to be the final expression.
+
+    Break long titles with ``<br>``; a plain ``\\n`` renders as a space, not a line break.
+    The top and bottom margins are sized from the title's line count and whether a legend
+    is drawn, which is what keeps either from being clipped.
+
+    When a particular figure still wants nudging, four offsets are available. All are in
+    paper coordinates -- the figure spans 0 to 1 in each direction -- so 0.05 is five per
+    cent of its width or height. Positive is right and up.
+
+    ``title_dx`` / ``title_dy``
+        move the main title.
+    ``panel_title_dx`` / ``panel_title_dy``
+        move the per-panel titles. ``panel_title_dy`` defaults to making room under a main
+        title; pass a number to override that, or 0.0 to leave them where ``scene3d`` put
+        them.
     """
-    from IPython.display import HTML, display
+    from IPython.display import display
 
     n = getattr(fig, "_course_rows", 1) * getattr(fig, "_course_cols", 1)
     axis = dict(visible=axes, showbackground=False)
+    top = (26 * (title.count("<br>") + 1) + 34) if title else 16
     fig.update_layout(
-        title=title,
-        margin=dict(l=0, r=0, t=48 if title else 16, b=0),
+        # Titles and legends are placed in paper coordinates, but the room they occupy is
+        # made by the margins, in pixels -- so the two have to be decided together. A fixed
+        # top margin fits a one-line title and clips a two-line one; a zero bottom margin
+        # clips the legend entirely. Both are sized from what is actually being drawn.
+        # Leaving `title.y` unset lets Plotly centre the title within the top margin.
+        title=_title_layout(fig, title, top, title_dx, title_dy) if title else None,
+        margin=dict(l=8, r=8, t=top, b=44 if legend else 8),
         showlegend=legend,
-        legend=dict(orientation="h", yanchor="bottom", y=-0.06, x=0),
+        legend=dict(orientation="h", x=0.5, xanchor="center", y=0, yanchor="top"),
         template="plotly_white",
     )
     for i in range(1, n + 1):
@@ -248,11 +312,32 @@ def show3d(fig, title: str | None = None, axes: bool = False, legend: bool = Tru
             f"scene{i}" if i > 1 else "scene":
                 dict(xaxis=axis, yaxis=axis, zaxis=axis, aspectmode=aspect)
         })
-    # include_plotlyjs="cdn" keeps the notebook small while staying self-describing, so the
-    # figure is live in Jupyter and on the built page alike.
-    # responsive=True makes Plotly size the SVG to its container and re-fit on resize;
-    # without it the figure keeps whatever width it was first laid out at and spills out
-    # of the output box.
-    display(HTML(fig.to_html(include_plotlyjs="cdn", full_html=False,
-                             default_width="100%",
-                             config={"displaylogo": False, "responsive": True})))
+    # A main title needs the space the panel titles would otherwise sit in, so drop them
+    # unless the caller has said where they want them.
+    if panel_title_dy is None:
+        panel_title_dy = -0.06 if title and fig.layout.annotations else 0.0
+    if panel_title_dx or panel_title_dy:
+        shift_titles(fig, panel_title_dy, panel_title_dx)
+    # Two representations of the same figure go into the output, and each front end picks
+    # the one it can draw:
+    #
+    #   application/vnd.plotly.v1+json -- what VS Code and JupyterLab render natively, with
+    #     no script fetched from the network. Editors sandbox HTML output, so a figure that
+    #     exists only as HTML pulling plotly.js from a CDN can silently draw nothing there.
+    #   text/html -- a self-describing figure for the published book, which has no kernel
+    #     and no Plotly extension behind it. include_plotlyjs="cdn" keeps the stored output
+    #     small; responsive=True makes Plotly re-fit the figure to its container instead of
+    #     keeping the width it was first laid out at and spilling out of the output box.
+    #
+    # MyST-NB does not know the Plotly mime type and falls back to text/html, which is why
+    # `mystnb.unknown_mime_type` is suppressed in book/_config.yml.
+    html = fig.to_html(include_plotlyjs="cdn", full_html=False, default_width="100%",
+                       config={"displaylogo": False, "responsive": True})
+    display(
+        {
+            "application/vnd.plotly.v1+json": fig.to_plotly_json(),
+            "text/html": html,
+            "text/plain": f"<plotly figure: {title or 'interactive 3D scene'}>",
+        },
+        raw=True,
+    )

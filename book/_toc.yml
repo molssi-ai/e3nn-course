@@ -27,6 +27,7 @@ parts:
       - file: notebooks/03a_tensor_products_theory
       - file: notebooks/03b_tensor_products_e3nn
       - file: notebooks/04_nonlinearities_and_gates
+      - file: notebooks/05a_atomistic_graphs
 
   - caption: Reference
     chapters:
