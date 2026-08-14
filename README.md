@@ -120,6 +120,7 @@ e3nn_course/
 - [Fuchs et al., *SE(3)-Transformers* NeurIPS (2020)](https://proceedings.neurips.cc/paper_files/paper/2020/file/15231a7ce4ba789d13b722cc5c955834-Paper.pdf)
 - [Anderson et al., *Cormorant* NeurIPS (2019)](https://proceedings.neurips.cc/paper_files/paper/2019/file/03573b32b2746e6e8ca98b9123f2249b-Paper.pdf)
 - [Liao & Smidt, *Equiformer* ICLR (2023)](https://arxiv.org/pdf/2206.11990)
+- [Behler & Parrinello, *Generalized neural-network representation of high-dimensional potential-energy surfaces* Phys. Rev. Lett. 98 146401 (2007)](https://doi.org/10.1103/PhysRevLett.98.146401)
 
 **Equivariant interatomic potentials**
 
