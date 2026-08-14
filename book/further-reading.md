@@ -19,6 +19,7 @@ work. All links are DOIs or arXiv entries.
 
 | Work | Used in |
 |---|---|
+| [Behler & Parrinello, *Generalized neural-network representation of high-dimensional potential-energy surfaces*, Phys. Rev. Lett. **98** 146401 (2007)](https://doi.org/10.1103/PhysRevLett.98.146401) | 05b, 08a |
 | [Schütt et al., *SchNet*, NeurIPS (2017)](https://arxiv.org/abs/1706.08566) | 07a |
 | [Gasteiger et al., *DimeNet*, ICLR (2020)](https://arxiv.org/abs/2003.03123) | 07b |
 | [Gasteiger et al., *DimeNet++*, arXiv:2011.14115 (2020)](https://arxiv.org/abs/2011.14115) | 07b |
