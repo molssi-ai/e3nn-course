@@ -30,6 +30,7 @@ parts:
       - file: notebooks/05a_atomistic_graphs
       - file: notebooks/05b_radial_basis_and_cutoffs
       - file: notebooks/06a_equivariant_convolution
+      - file: notebooks/06b_tetris_end_to_end
 
   - caption: Reference
     chapters:
