@@ -21,6 +21,7 @@ work. All links are DOIs or arXiv entries.
 |---|---|
 | [Behler & Parrinello, *Generalized neural-network representation of high-dimensional potential-energy surfaces*, Phys. Rev. Lett. **98** 146401 (2007)](https://doi.org/10.1103/PhysRevLett.98.146401) | 05b, 08a |
 | [Schütt et al., *SchNet: A continuous-filter convolutional neural network for modeling quantum interactions*, arXiv:1706.08566 (2017)](https://arxiv.org/abs/1706.08566) | 07a |
+| [Schütt et al., *SchNet — A deep learning architecture for molecules and materials*, J. Chem. Phys. **148** 241722 (2018)](https://doi.org/10.1063/1.5019779) | 07a |
 | [Gasteiger et al., *Directional message passing for molecular graphs* (DimeNet), arXiv:2003.03123 (2022)](https://arxiv.org/abs/2003.03123) | 07b |
 | [Gasteiger et al., *DimeNet++*, arXiv:2011.14115 (2020)](https://arxiv.org/abs/2011.14115) | 07b |
 
