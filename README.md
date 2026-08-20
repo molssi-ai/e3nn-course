@@ -123,6 +123,7 @@ e3nn_course/
 - [Gasteiger et al., *Directional Message Passing for Molecular Graphs* arXiv.2003.03123 (2022)](https://arxiv.org/pdf/2003.03123)
 - [Behler & Parrinello, *Generalized neural-network representation of high-dimensional potential-energy surfaces* Phys. Rev. Lett. 98 146401 (2007)](https://doi.org/10.1103/PhysRevLett.98.146401)
 - [Schütt et al., *SchNet: A continuous-filter convolutional neural network for modeling quantum interactions* arXiv.1706.08566 (2017)](https://arxiv.org/pdf/1706.08566)
+- [Schütt et al., *SchNet: A deep learning architecture for molecules and materials*, J. Chem. Phys. 148, 241722 (2018)](https://doi.org/10.1063/1.5019779)
 
 **Equivariant interatomic potentials**
 
