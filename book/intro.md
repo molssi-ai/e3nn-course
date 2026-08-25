@@ -91,7 +91,7 @@ stored notebook outputs current.
 :link: curriculum
 :link-type: doc
 
-All twenty-one lessons in five parts, with what each one teaches and the e3nn API it
+All twenty-two lessons in five parts, with what each one teaches and the e3nn API it
 introduces.
 ````
 

@@ -1,7 +1,7 @@
 # Table of contents for the e3nn course book.
 #
 # This lists the lessons that are published. Sphinx can only build files that exist, so
-# lessons still to come are not here -- the full twenty-one-lesson map lives on
+# lessons still to come are not here -- the full twenty-two-lesson map lives on
 # book/curriculum.md, which links to every lesson and lights each link up as its notebook
 # lands (see book/_ext/pending_lessons.py). Adding a lesson means adding its notebook, then
 # adding one `- file:` line to the right part below.
@@ -33,6 +33,7 @@ parts:
       - file: notebooks/06b_tetris_end_to_end
       - file: notebooks/07a_schnet
       # - file: notebooks/07b_dimenet
+      # - file: notebooks/07c_rmd17_aspirin
 
   - caption: Reference
     chapters:

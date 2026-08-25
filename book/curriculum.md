@@ -1,6 +1,6 @@
 # Curriculum at a glance
 
-Twenty-one lessons in five parts. Theory lessons are lettered `a`, implementations `b`/`c`,
+Twenty-two lessons in five parts. Theory lessons are lettered `a`, implementations `b`/`c`,
 and each is self-contained enough to open cold.
 
 ## Part I: Foundations: Symmetry, Irreps, and Equivariant Operations (Lessons 01-04)
@@ -38,6 +38,7 @@ the rest of the course is variations on.*
 |---|---|---|
 | [07a · SchNet](../notebooks/07a_schnet.ipynb) | The continuous-filter convolution and its filter-generating network; the full invariant blueprint from species embedding to atom-wise readout; why energy-conserving forces must come from $\vec F_i = -\partial E/\partial \vec{r}_{i}$ by autograd rather than a separate force head; the standard joint energy + force loss | autograd forces |
 | [07b · DimeNet](../notebooks/07b_dimenet.ipynb) | A **runnable counterexample**: two structures no distance-based GNN can tell apart, at any cutoff; directional message passing on *directed edges* using angles, while the prediction stays invariant; the 2D spherical Fourier–Bessel basis and the DimeNet++ efficiency fixes; the $O(Nk^2)$ triplet cost that motivates Part IV | edge/triplet indexing |
+| [07c · The rematch: rMD17 aspirin](../notebooks/07c_rmd17_aspirin.ipynb) | The experiment 07b could only promise: the *same* two models, unchanged, on a real molecule whose energy depends on angles, and the comparison **reverses**; working with rMD17 (units, official splits, the 1000-frame rule); an angle-blinding ablation that pins the gap on the angular basis; the $O(Nk^2)$ bill, measured in wall-clock | `load_rmd17` |
 
 ## Part IV: State-of-the-Art Equivariant Potentials (Lessons 08-10)
 

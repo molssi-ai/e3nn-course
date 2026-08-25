@@ -90,6 +90,7 @@ e3nn_course/
 |---|---|
 | `07a_schnet.ipynb` | SchNet: continuous-filter convolutions; the invariant message-passing blueprint. |
 | `07b_dimenet.ipynb` | DimeNet(++): directional message passing with angles; strengths and the incompleteness problem. |
+| `07c_rmd17_aspirin.ipynb` | Train SchNet and DimeNet on the small rMD17 aspirin dataset; compare performance. |
 
 ### Part IV: State-of-the-Art Equivariant Potentials (Lessons 08-10)
 

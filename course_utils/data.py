@@ -1,7 +1,8 @@
 """Toy datasets and graph-construction helpers for the course.
 
-Everything here is generated locally (no downloads) so the notebooks are reproducible
-offline and run in seconds.
+Everything here is generated locally so the notebooks are reproducible offline and run
+in seconds. The one exception is ``load_rmd17`` (Lesson 07c), which downloads a real
+molecular dataset on first use and then works from a small local cache.
 """
 
 from __future__ import annotations
@@ -123,6 +124,103 @@ def make_lj_argon_dataset(
         dyn.run(5)  # decorrelate frames a bit
         record()
     return frames
+
+
+# Revised MD17 (rMD17): real DFT energies/forces for ten small organic molecules.
+# Christensen & von Lilienfeld, "On the role of gradients for machine learning of
+# molecular energies and forces" (Mach. Learn.: Sci. Technol. 2020); data on figshare
+# (doi:10.6084/m9.figshare.12672038). PBE/def2-SVP with very tight SCF and dense grids,
+# so the forces are practically noise-free. Used in Lesson 07c.
+
+_RMD17_FIGSHARE = "https://ndownloader.figshare.com/files/{}"
+
+_RMD17_MOLECULES = {  # molecule -> figshare file id of rmd17_<molecule>.npz
+    "aspirin": 62265757, "azobenzene": 62265754, "benzene": 62265739,
+    "ethanol": 62265733, "malonaldehyde": 62265736, "naphthalene": 62265751,
+    "paracetamol": 62265760, "salicylic": 62265748, "toluene": 62265742,
+    "uracil": 62265745,
+}
+
+_RMD17_SPLIT_01 = {"train": 62265793, "test": 62265781}  # official split 01 index CSVs
+
+KCAL_PER_MOL = 0.0433641  # eV; rMD17 stores energies/forces in kcal/mol (and Å)
+
+
+def _download(url: str, dest, desc: str):
+    """Tiny urllib downloader (figshare rejects requests without a browser user agent)."""
+    import urllib.request
+
+    print(f"downloading {desc} ...", flush=True)
+    req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0"})
+    with urllib.request.urlopen(req) as r, open(dest, "wb") as f:
+        while chunk := r.read(1 << 20):
+            f.write(chunk)
+
+
+def load_rmd17(molecule: str = "aspirin", n_train: int = 150, n_val: int = 50,
+               cache_dir: str = "artifacts"):
+    """A small, deterministic subset of the revised MD17 dataset.
+
+    On first call this downloads the full per-molecule file (70-180 MB) plus the
+    official train/test index lists of split 01, keeps the 1000 train + 1000 test
+    frames of that split in a small cached ``.npz`` (~2 MB) under ``cache_dir``, and
+    deletes the big download. Every later call (any ``n_train``/``n_val``) is offline.
+
+    Returns ``(train_frames, val_frames, z)``: frames follow the course convention
+    ``{"pos": (N,3) float64 [Å], "energy": float [eV], "forces": (N,3) [eV/Å]}``
+    (converted from the dataset's kcal/mol), and ``z`` is the ``(N,)`` tensor of
+    nuclear charges, identical for every frame. ``train_frames`` are the first
+    ``n_train`` frames of the official train split, ``val_frames`` the first
+    ``n_val`` of the official test split — no seed involved.
+
+    The dataset readme warns that frames come from a MD trajectory (correlated
+    samples): never train on more than the 1000 frames of the official split.
+    """
+    import os
+
+    if molecule not in _RMD17_MOLECULES:
+        raise ValueError(f"unknown molecule {molecule!r}; one of {sorted(_RMD17_MOLECULES)}")
+    if not (0 < n_train <= 1000 and 0 < n_val <= 1000):
+        raise ValueError("n_train and n_val must be in [1, 1000] (correlated MD frames!)")
+
+    os.makedirs(cache_dir, exist_ok=True)
+    cache = os.path.join(cache_dir, f"rmd17_{molecule}_split01.npz")
+
+    if not os.path.exists(cache):
+        # local fallback: a manually placed full download is picked up instead
+        raw = os.path.join(cache_dir, f"rmd17_{molecule}_full.npz")
+        if not os.path.exists(raw):
+            _download(_RMD17_FIGSHARE.format(_RMD17_MOLECULES[molecule]), raw,
+                      f"rmd17_{molecule}.npz (one-time, ~100 MB)")
+        idx = {}
+        for part, file_id in _RMD17_SPLIT_01.items():
+            index_csv = os.path.join(cache_dir, f"rmd17_index_{part}_01.csv")
+            if not os.path.exists(index_csv):
+                _download(_RMD17_FIGSHARE.format(file_id), index_csv,
+                          f"split-01 {part} indices")
+            idx[part] = np.loadtxt(index_csv, dtype=int)
+        full = np.load(raw)
+        np.savez_compressed(
+            cache, nuclear_charges=full["nuclear_charges"],
+            **{f"{k}_{p}": full[k][idx[p]] for p in ("train", "test")
+               for k in ("coords", "energies", "forces")},
+            **{f"index_{p}": idx[p] for p in ("train", "test")},
+        )
+        os.remove(raw)  # keep only the ~2 MB subset
+        print(f"cached {cache}")
+
+    data = np.load(cache)
+    z = torch.tensor(data["nuclear_charges"].astype(np.int64))
+
+    def frames(part, n):
+        return [
+            {"pos": torch.tensor(data[f"coords_{part}"][i]),
+             "energy": float(data[f"energies_{part}"][i]) * KCAL_PER_MOL,
+             "forces": torch.tensor(data[f"forces_{part}"][i]) * KCAL_PER_MOL}
+            for i in range(n)
+        ]
+
+    return frames("train", n_train), frames("test", n_val), z
 
 
 def train_val_split(items, val_fraction: float = 0.2, seed: int = 0):
