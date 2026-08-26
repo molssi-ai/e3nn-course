@@ -112,47 +112,64 @@ e3nn_course/
 
 ## Primary References
 
-**Core frameworks & foundational methods**
+<details> <!-- Start Core frameworks & foundational methods -->
+<summary><h3 style="display:inline-block">Core frameworks & foundational methods</h3></summary>
 
-- [Geiger & Smidt, *e3nn: Euclidean Neural Networks* arXiv.2207.09453 (2021)](https://arxiv.org/pdf/2207.09453)
-- [Thomas et al., *Tensor Field Networks* arXiv.1802.08219 (2018)](https://arxiv.org/pdf/1802.08219)
-- [Weiler et al., *3D Steerable CNNs* NeurIPS (2018)](https://proceedings.neurips.cc/paper_files/paper/2018/file/488e4104520c6aab692863cc1dba45af-Paper.pdf)
-- [Battaglia et al., *Relational inductive biases and graph networks* arXiv.1806.01261 (2018)](https://arxiv.org/pdf/1806.01261)
-- [Fuchs et al., *SE(3)-Transformers* NeurIPS (2020)](https://proceedings.neurips.cc/paper_files/paper/2020/file/15231a7ce4ba789d13b722cc5c955834-Paper.pdf)
 - [Anderson et al., *Cormorant* NeurIPS (2019)](https://proceedings.neurips.cc/paper_files/paper/2019/file/03573b32b2746e6e8ca98b9123f2249b-Paper.pdf)
-- [Liao & Smidt, *Equiformer* ICLR (2023)](https://arxiv.org/pdf/2206.11990)
-- [Gasteiger et al., *Directional Message Passing for Molecular Graphs* arXiv.2003.03123 (2022)](https://arxiv.org/pdf/2003.03123)
+- [Battaglia et al., *Relational inductive biases and graph networks* arXiv.1806.01261 (2018)](https://arxiv.org/pdf/1806.01261)
 - [Behler & Parrinello, *Generalized neural-network representation of high-dimensional potential-energy surfaces* Phys. Rev. Lett. 98 146401 (2007)](https://doi.org/10.1103/PhysRevLett.98.146401)
+- [Fuchs et al., *SE(3)-Transformers* NeurIPS (2020)](https://proceedings.neurips.cc/paper_files/paper/2020/file/15231a7ce4ba789d13b722cc5c955834-Paper.pdf)
+- [Gasteiger et al., *Directional Message Passing for Molecular Graphs* arXiv.2003.03123 (2020)](https://arxiv.org/pdf/2003.03123)
+- [Gasteiger et al., *Fast and Uncertainty-Aware Directional Message Passing for Non-Equilibrium Molecules* arXiv.2011.14115 (2022)](https://arxiv.org/pdf/2011.14115)
+- [Geiger & Smidt, *e3nn: Euclidean Neural Networks* arXiv.2207.09453 (2021)](https://arxiv.org/pdf/2207.09453)
+- [Liao & Smidt, *Equiformer* ICLR (2023)](https://arxiv.org/pdf/2206.11990)
+- [Pozdnyakov & Ceriotti, *Incompleteness of graph neural networks for point clouds in three dimensions* arXiv.2201.07136 2022](https://arxiv.org/pdf/2201.07136)
 - [Schütt et al., *SchNet: A continuous-filter convolutional neural network for modeling quantum interactions* arXiv.1706.08566 (2017)](https://arxiv.org/pdf/1706.08566)
 - [Schütt et al., *SchNet: A deep learning architecture for molecules and materials*, J. Chem. Phys. 148, 241722 (2018)](https://doi.org/10.1063/1.5019779)
+- [Thomas et al., *Tensor Field Networks* arXiv.1802.08219 (2018)](https://arxiv.org/pdf/1802.08219)
+- [Weiler et al., *3D Steerable CNNs* NeurIPS (2018)](https://proceedings.neurips.cc/paper_files/paper/2018/file/488e4104520c6aab692863cc1dba45af-Paper.pdf)
 
-**Equivariant interatomic potentials**
+</details> <!-- End Core frameworks & foundational methods -->
 
-- [Batzner et al., *NequIP: E(3)-equivariant GNNs for interatomic potentials* Nat. Commun. 13 2453 (2022)](https://doi.org/10.1038/s41467-022-29939-5)
-- [Musaelian et al., *Allegro: local equivariant representations* Nat. Commun. 14 579 (2023)](https://doi.org/10.1038/s41467-023-36329-y)
+<details> <!-- Start Equivariant interatomic potentials -->
+<summary><h3 style="display:inline-block">Equivariant interatomic potentials</h3></summary>
+
 - [Batatia et al., *MACE* NeurIPS (2022)](https://proceedings.neurips.cc/paper_files/paper/2022/file/4a36c3c51af11ed9f34615b81edb5bbc-Paper-Conference.pdf)
 - Batatia et al., *The design space of E(3)-equivariant atom-centred potentials* (2022)
    + [Batatia arXiv.2205.06643 2022](https://arxiv.org/pdf/2205.06643)
    + [Batatia Nat. Mach. Intell. 7 56 2025](https://doi.org/10.1038/s42256-024-00956-x)
+- [Batatia et al., *MACE-MP-0 foundation model* arXiv.2401.00096 (2025)](https://arxiv.org/pdf/2401.00096)
+- [Batzner et al., *NequIP: E(3)-equivariant GNNs for interatomic potentials* Nat. Commun. 13 2453 (2022)](https://doi.org/10.1038/s41467-022-29939-5)
 - [Kovács et al., *Evaluation of MACE* J. Chem. Phys. 159 044118 (2023)](https://doi.org/10.1063/5.0155322)
 - [Kovács et al., *MACE-OFF* J. Am. Chem. Soc. 147 17598 (2025)](https://doi.org/10.1021/jacs.4c07099)
-- [Batatia et al., *MACE-MP-0 foundation model* arXiv.2401.00096 (2025)](https://arxiv.org/pdf/2401.00096)
+- [Musaelian et al., *Allegro: local equivariant representations* Nat. Commun. 14 579 (2023)](https://doi.org/10.1038/s41467-023-36329-y)
 
-**Atomic Cluster Expansion & theory**
+</details> <!-- End Equivariant interatomic potentials -->
 
+<details> <!-- Start Atomic Cluster Expansion & theory -->
+<summary><h3 style="display:inline-block">Atomic Cluster Expansion & theory</h3></summary>
+
+- [Chong et al., *Resolving the body-order paradox of MLIPs* J. Chem. Phys. 164 064121 (2026)](https://doi.org/10.1063/5.0303302)
 - [Drautz, *Atomic cluster expansion* Phys. Rev. B 99 014104 (2019)](https://doi.org/10.1103/PhysRevB.99.014104)
 - [Dusson et al., *ACE: completeness, efficiency, stability* J. Comput. Phys. 454 110946 (2022)](https://doi.org/10.1016/j.jcp.2022.110946)
 - [Nigam et al., *Unified theory of atom-centered representations and message passing* J. Chem. Phys. 156 204115 (2022)](https://doi.org/10.1063/5.0087042)
 - [Pozdnyakov & Ceriotti, *Incompleteness of GNNs for point clouds* arXiv.2201.07136 (2022)](https://arxiv.org/pdf/2201.07136)
-- [Chong et al., *Resolving the body-order paradox of MLIPs* J. Chem. Phys. 164 064121 (2026)](https://doi.org/10.1063/5.0303302)
 
-**Long-range interactions & periodic systems**
+</details> <!-- End Atomic Cluster Expansion & theory -->
 
-- [Grisafi & Ceriotti, *Incorporating long-range physics* J. Chem. Phys. 151 204105 (2019)](https://doi.org/10.1063/1.5128375)
-- [Kosmala et al., *Ewald-based message passing*  PMLR 202 17544 (2023)](https://proceedings.mlr.press/v202/kosmala23a.html)
+<details> <!-- Start Long-range interactions & periodic systems -->
+<summary><h3 style="display:inline-block">Long-range interactions & periodic systems</h3></summary>
+
 - [Cheng et al., *Latent Ewald summation* npj Comput. Mater. 11 80 (2025)](https://doi.org/10.1038/s41524-025-01577-7)
+- [Grisafi & Ceriotti, *Incorporating long-range physics* J. Chem. Phys. 151 204105 (2019)](https://doi.org/10.1063/1.5128375)
 - [Kolafa & Perram, *Cutoff errors in Ewald summation* Mol. Simul. 9 351 (1992)](https://doi.org/10.1080/08927029208049126)
+- [Kosmala et al., *Ewald-based message passing*  PMLR 202 17544 (2023)](https://proceedings.mlr.press/v202/kosmala23a.html)
 
-**Additional resources:** 
+</details> <!-- End Long-range interactions & periodic systems -->
+
+<details> <!-- Start Additional resources -->
+<summary><h3 style="display:inline-block">Additional resources</h3></summary>
 
 - [The official e3nn MRS Fall 2021 tutorial](https://e3nn.org/e3nn-tutorial-mrs-fall-2021)
+
+</details> <!-- End Additional resources -->
