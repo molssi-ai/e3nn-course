@@ -1,5 +1,18 @@
 # Equivariant Graph Neural Networks with e3nn: A Hands-On Course
 
+Machine learning interatomic potentials (MLIPs) are transforming how chemistry,
+physics, and materials science simulate matter at the atomic scale. By learning
+the potential energy surface from quantum-mechanical reference data, they
+deliver near first-principles accuracy at an reasonable fraction of the cost:
+serving as force fields in molecular dynamics simulations, accelerating the
+discovery and design of catalysts, screening electrolytes and electrode
+materials for next-generation batteries, predicting molecular and materials
+properties, and exploring solid-state physics problems such as phase
+transitions, defects, and thermal transport to system sizes far beyond the reach
+of many current electronic structure methods. Behind these advances lies one
+shared architectural principle: neural networks built to respect the Euclidean
+symmetries of physical space.
+
 This course offers a comprehensive, step-by-step and user-friendly tutorial series
 which takes you from the mathematical foundations of Euclidean symmetry to complete
 and working implementations of state-of-the-art invariant baseline models **SchNet**,
