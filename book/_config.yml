@@ -59,7 +59,7 @@ html:
   use_issues_button: true
   use_repository_button: true
   use_edit_page_button: true
-  announcement: "This course is under active development — feedback and issues are very welcome."
+  announcement: "This course is under active development. We welcome your feedback and contribution."
   extra_footer: |
     <p>
       Built with <a href="https://jupyterbook.org" target="_blank"
