@@ -14,6 +14,7 @@ work. All links are DOIs or arXiv entries.
 | [Fuchs et al., *SE(3)-Transformers*, NeurIPS (2020)](https://proceedings.neurips.cc/paper_files/paper/2020/file/15231a7ce4ba789d13b722cc5c955834-Paper.pdf) | 06a |
 | [Anderson et al., *Cormorant*, NeurIPS (2019)](https://proceedings.neurips.cc/paper_files/paper/2019/file/03573b32b2746e6e8ca98b9123f2249b-Paper.pdf) | 03a |
 | [Liao & Smidt, *Equiformer*, ICLR (2023)](https://arxiv.org/abs/2206.11990) | 04 |
+| [Grisafi et al., *Symmetry-adapted machine learning for tensorial properties of atomistic systems*, Phys. Rev. Lett. **120** 036002 (2018)](https://doi.org/10.1103/PhysRevLett.120.036002) | background |
 
 ## Invariant baselines
 
@@ -55,6 +56,13 @@ work. All links are DOIs or arXiv entries.
 | [Kosmala et al., *Ewald-based message passing*, PMLR **202** 17544 (2023)](https://proceedings.mlr.press/v202/kosmala23a.html) | 05a |
 | [Cheng, *Latent Ewald summation*, npj Comput. Mater. **11** 80 (2025)](https://doi.org/10.1038/s41524-025-01577-7) | 05a |
 | [Kolafa & Perram, *Cutoff errors in Ewald summation*, Mol. Simul. **9** 351 (1992)](https://doi.org/10.1080/08927029208049126) | 05b |
+
+## Datasets
+
+| Work | Used in |
+|---|---|
+| [Chmiela et al., *Machine learning of accurate energy-conserving molecular force fields* (MD17), Sci. Adv. **3** e1603015 (2017)](https://doi.org/10.1126/sciadv.1603015) | 07c |
+| [Christensen & von Lilienfeld, *On the role of gradients for machine learning of molecular energies and forces* (rMD17), arXiv:2007.09593 (2020)](https://arxiv.org/abs/2007.09593) | 07c |
 
 ## Software documentation
 

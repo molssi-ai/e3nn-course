@@ -167,6 +167,14 @@ e3nn_course/
 
 </details> <!-- End Long-range interactions & periodic systems -->
 
+<details> <!-- Start Datasets -->
+<summary><h3 style="display:inline-block">Datasets</h3></summary>
+
+- [Chmiela et al., *Machine learning of accurate energy-conserving molecular force fields* Sci. Adv. 3 e1603015 (2017)](https://doi.org/10.1126/sciadv.1603015)
+- [Christensen & von Lilienfeld, *On the role of gradients for machine learning of molecular energies and forces* arXiv.2007.09593 (2020)](https://arxiv.org/abs/2007.09593)
+
+</details> <!-- End Datasets -->
+
 <details> <!-- Start Additional resources -->
 <summary><h3 style="display:inline-block">Additional resources</h3></summary>
 
