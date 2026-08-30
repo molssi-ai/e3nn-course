@@ -33,7 +33,7 @@ parts:
       - file: notebooks/06b_tetris_end_to_end
       - file: notebooks/07a_schnet
       - file: notebooks/07b_dimenet
-      # - file: notebooks/07c_rmd17_aspirin
+      - file: notebooks/07c_rmd17_aspirin
 
   - caption: Reference
     chapters:
