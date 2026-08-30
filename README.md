@@ -122,6 +122,7 @@ e3nn_course/
 - [Gasteiger et al., *Directional Message Passing for Molecular Graphs* arXiv.2003.03123 (2020)](https://arxiv.org/pdf/2003.03123)
 - [Gasteiger et al., *Fast and Uncertainty-Aware Directional Message Passing for Non-Equilibrium Molecules* arXiv.2011.14115 (2022)](https://arxiv.org/pdf/2011.14115)
 - [Geiger & Smidt, *e3nn: Euclidean Neural Networks* arXiv.2207.09453 (2021)](https://arxiv.org/pdf/2207.09453)
+- [Grisafi et al., *Symmetry-adapted machine learning for tensorial properties of atomistic systems* Phys. Rev. Lett. 120 036002 (2018)](https://doi.org/10.1103/PhysRevLett.120.036002)
 - [Liao & Smidt, *Equiformer* ICLR (2023)](https://arxiv.org/pdf/2206.11990)
 - [Pozdnyakov & Ceriotti, *Incompleteness of graph neural networks for point clouds in three dimensions* arXiv.2201.07136 2022](https://arxiv.org/pdf/2201.07136)
 - [Schütt et al., *SchNet: A continuous-filter convolutional neural network for modeling quantum interactions* arXiv.1706.08566 (2017)](https://arxiv.org/pdf/1706.08566)
@@ -166,6 +167,14 @@ e3nn_course/
 - [Kosmala et al., *Ewald-based message passing*  PMLR 202 17544 (2023)](https://proceedings.mlr.press/v202/kosmala23a.html)
 
 </details> <!-- End Long-range interactions & periodic systems -->
+
+<details> <!-- Start Datasets -->
+<summary><h3 style="display:inline-block">Datasets</h3></summary>
+
+- [Chmiela et al., *Machine learning of accurate energy-conserving molecular force fields* Sci. Adv. 3 e1603015 (2017)](https://doi.org/10.1126/sciadv.1603015)
+- [Christensen & von Lilienfeld, *On the role of gradients for machine learning of molecular energies and forces* arXiv.2007.09593 (2020)](https://arxiv.org/abs/2007.09593)
+
+</details> <!-- End Datasets -->
 
 <details> <!-- Start Additional resources -->
 <summary><h3 style="display:inline-block">Additional resources</h3></summary>
