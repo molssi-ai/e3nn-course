@@ -140,7 +140,7 @@ e3nn_course/
    + [Batatia arXiv.2205.06643 2022](https://arxiv.org/pdf/2205.06643)
    + [Batatia Nat. Mach. Intell. 7 56 2025](https://doi.org/10.1038/s42256-024-00956-x)
 - [Batatia et al., *MACE-MP-0 foundation model* arXiv.2401.00096 (2025)](https://arxiv.org/pdf/2401.00096)
-- [Batzner et al., *NequIP: E(3)-equivariant GNNs for interatomic potentials* Nat. Commun. 13 2453 (2022)](https://doi.org/10.1038/s41467-022-29939-5)
+- [Batzner et al., *NequIP: E(3)-equivariant graph neural networks for data-efficient and accurate interatomic potentials* Nat. Commun. 13 2453 (2022)](https://doi.org/10.1038/s41467-022-29939-5)
 - [Kovács et al., *Evaluation of MACE* J. Chem. Phys. 159 044118 (2023)](https://doi.org/10.1063/5.0155322)
 - [Kovács et al., *MACE-OFF* J. Am. Chem. Soc. 147 17598 (2025)](https://doi.org/10.1021/jacs.4c07099)
 - [Musaelian et al., *Allegro: local equivariant representations* Nat. Commun. 14 579 (2023)](https://doi.org/10.1038/s41467-023-36329-y)
