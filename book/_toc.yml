@@ -17,7 +17,7 @@ parts:
       - file: book/how-to-use
       - file: book/curriculum
 
-  - caption: "Part I — Foundations: Symmetry, Irreps and Equivariant Operations"
+  - caption: "Part I:  Foundations: Symmetry, Irreps and Equivariant Operations"
     numbered: true
     chapters:
       - file: notebooks/01a_symmetry_and_equivariance
@@ -27,13 +27,37 @@ parts:
       - file: notebooks/03a_tensor_products_theory
       - file: notebooks/03b_tensor_products_e3nn
       - file: notebooks/04_nonlinearities_and_gates
+
+  - caption: "Part II:  From Operations to Networks"
+    numbered: true
+    chapters:
       - file: notebooks/05a_atomistic_graphs
       - file: notebooks/05b_radial_basis_and_cutoffs
       - file: notebooks/06a_equivariant_convolution
       - file: notebooks/06b_tetris_end_to_end
+
+  - caption: "Part III: Invariant Baselines"
+    numbered: true
+    chapters:
       - file: notebooks/07a_schnet
       - file: notebooks/07b_dimenet
       - file: notebooks/07c_rmd17_aspirin
+
+  - caption: "Part IV: State-of-the-Art Equivariant Potentials"
+    numbered: true
+    chapters:
+      - file: notebooks/08a_nequip_theory
+  #     - file: notebooks/08b_nequip_implementation
+  #     - file: notebooks/09a_allegro_theory
+  #     - file: notebooks/09b_allegro_implementation
+  #     - file: notebooks/10a_ace_theory
+  #     - file: notebooks/10b_mace_theory
+  #     - file: notebooks/10c_mace_implementation
+
+  # - caption: "Part V: Applications"
+  #   numbered: true
+  #   chapters:
+  #     - file: notebooks/11_molecular_dynamics_ase
 
   - caption: Reference
     chapters:
