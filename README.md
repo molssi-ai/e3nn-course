@@ -1,4 +1,4 @@
-# Equivariant Graph Neural Networks with e3nn: A Hands-On Course
+# Equivariant Graph Neural Networks with e3nn
 
 This repository offers a comprehensive, step-by-step and user-friendly tutorial
 series which takes you from the mathematical foundations of Euclidean symmetry
