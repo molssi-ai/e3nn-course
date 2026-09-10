@@ -67,6 +67,11 @@ html:
       Course material by <a href="https://molssi.org" target="_blank"
         rel="noopener noreferrer">MolSSI</a>.
     </p>
+    <p>
+      Supported by the National Science Foundation under grant
+      <a href="https://www.nsf.gov/awardsearch/showAward?AWD_ID=2136142"
+        target="_blank" rel="noopener noreferrer">CHE-2136142</a>.
+    </p>
 
 sphinx:
   # Merges in the sphinx-book-theme options Jupyter Book has no YAML key for, and fills
