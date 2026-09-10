@@ -1,4 +1,4 @@
-# Equivariant Graph Neural Networks with e3nn: A Hands-On Course
+# Equivariant Graph Neural Networks with e3nn
 
 Machine learning interatomic potentials (MLIPs) are transforming how chemistry,
 physics, and materials science simulate matter at the atomic scale. By learning
