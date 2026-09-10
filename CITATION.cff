@@ -1,0 +1,33 @@
+cff-version: 1.2.0
+message: "If you have found this course useful in your research, please cite it as below."
+type: book
+title: "Equivariant Graph Neural Networks with e3nn"
+authors:
+  - family-names: Mostafanejad
+    given-names: Mohammad
+    email: sina.mostafanejad@gmail.com
+    affiliation: "The Molecular Sciences Software Institute"
+identifiers:
+  - type: doi
+    value: 10.34974/BDKQ-0J86
+    description: "The DOI of this course"
+repository-code: "https://github.com/molssi-ai/e3nn-course"
+url: "https://github.com/molssi-ai/e3nn-course"
+keywords:
+  - "FOS: Physical sciences"
+  - "FOS: Chemical sciences"
+license: MIT
+preferred-citation:
+  type: generic
+  title: "Equivariant Graph Neural Networks with e3nn"
+  authors:
+    - family-names: Mostafanejad
+      given-names: Mohammad
+      affiliation: "The Molecular Sciences Software Institute"
+  doi: 10.34974/BDKQ-0J86
+  url: "https://github.com/molssi-ai/e3nn-course"
+  year: 2026
+  publisher:
+    name: "The Molecular Sciences Software Institute"
+  languages:
+    - en

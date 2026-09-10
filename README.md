@@ -110,6 +110,29 @@ e3nn_course/
 |---|---|
 | `11_molecular_dynamics_ase.ipynb` | Wrap a trained model as an ASE calculator; run MD; sanity checks (energy conservation, RDFs). |
 
+## Citing this Course
+
+If you have found this course useful in your research, please cite it as follows:
+
+- APA:
+
+  Mostafanejad, M. (2026). Equivariant Graph Neural Networks with e3nn. The Molecular Sciences Software Institute. https://doi.org/10.34974/BDKQ-0J86
+
+- BibTeX:
+
+  ```
+  @misc{https://doi.org/10.34974/bdkq-0j86,
+    doi = {10.34974/BDKQ-0J86},
+    url = {https://github.com/molssi-ai/e3nn-course},
+    author = {Mostafanejad, Mohammad},
+    keywords = {FOS: Physical sciences, FOS: Chemical sciences},
+    language = {en},
+    title = {Equivariant Graph Neural Networks with e3nn},
+    publisher = {The Molecular Sciences Software Institute},
+    year = {2026},
+    copyright = {MIT License}
+  }
+
 ## Primary References
 
 <details> <!-- Start Core frameworks & foundational methods -->
