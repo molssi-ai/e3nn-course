@@ -60,6 +60,8 @@ html:
   use_repository_button: true
   use_edit_page_button: true
   announcement: "This course is under active development. We welcome your feedback and contribution."
+  analytics:
+    google_analytics_id: G-3HKTZBDQNC
   extra_footer: |
     <p>
       Built with <a href="https://jupyterbook.org" target="_blank"
