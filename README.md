@@ -132,6 +132,7 @@ If you have found this course useful in your research, please cite it as follows
     year = {2026},
     copyright = {MIT License}
   }
+  ```
 
 ## Primary References
 
