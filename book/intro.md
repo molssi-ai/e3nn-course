@@ -119,6 +119,25 @@ data augmentation is not enough.
 
 ## Citing this course
 
-If this material is useful in your teaching or research, please cite the repository and
-the primary papers for the architectures you use: all collected on the
-[Further reading](further-reading) page with DOIs.
+If you have found this course useful in your research, please cite it as follows:
+
+
+- APA:
+
+  Mostafanejad, M. (2026). Equivariant Graph Neural Networks with e3nn. The Molecular Sciences Software Institute. https://doi.org/10.34974/BDKQ-0J86
+
+- BibTeX:
+
+  ```
+  @misc{https://doi.org/10.34974/bdkq-0j86,
+    doi = {10.34974/BDKQ-0J86},
+    url = {https://github.com/molssi-ai/e3nn-course},
+    author = {Mostafanejad, Mohammad},
+    keywords = {FOS: Physical sciences, FOS: Chemical sciences},
+    language = {en},
+    title = {Equivariant Graph Neural Networks with e3nn},
+    publisher = {The Molecular Sciences Software Institute},
+    year = {2026},
+    copyright = {MIT License}
+  }
+  ```
