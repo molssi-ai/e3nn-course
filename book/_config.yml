@@ -60,8 +60,6 @@ html:
   use_repository_button: true
   use_edit_page_button: true
   announcement: "This course is under active development. We welcome your feedback and contribution."
-  analytics:
-    google_analytics_id: G-3HKTZBDQNC
   extra_footer: |
     <p>
       Built with <a href="https://jupyterbook.org" target="_blank"
@@ -122,7 +120,12 @@ sphinx:
       - book/_static
     html_css_files:
       - custom.css
+    # Google Analytics, injected directly rather than via html.analytics: the theme's
+    # own injection wraps the tag in Consent Mode defaults hardcoded to "denied"
+    # (cookieless pings only, so GA4 reports stay empty) and adds the snippet twice.
     html_js_files:
+      - ["https://www.googletagmanager.com/gtag/js?id=G-3HKTZBDQNC", {"async": "async"}]
+      - gtag-init.js
       - plotly-fit.js
     # Number every display equation automatically, sequentially per page ((1), (2),
     # ...) rather than per section, so the numbers match how the lessons refer to them.
