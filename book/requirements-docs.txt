@@ -10,6 +10,13 @@
 
 jupyter-book==1.0.4.post1
 
+# Pin the theme stack so CI builds exactly what .venv-docs builds locally.
+# pydata-sphinx-theme >= 0.18 hardcodes GA4 consent-mode defaults to "denied"
+# (cookieless pings only -- GA reports stay empty) and duplicates the gtag
+# snippet with our setup; 0.17.1 injects the plain snippet once.
+sphinx-book-theme==1.3.0
+pydata-sphinx-theme==0.17.1
+
 # Directives used by the lessons: {exercise}/{solution} and {prf:theorem} etc.
 sphinx-exercise==1.2.1
 sphinx-proof==0.4.0
