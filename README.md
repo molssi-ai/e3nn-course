@@ -97,7 +97,8 @@ e3nn_course/
 | Notebook | Topic |
 |---|---|
 | `08a_nequip_theory.ipynb` | NequIP: architecture equations, interaction blocks, why l>0 features boost data efficiency. |
-| `08b_nequip_implementation.ipynb` | Block-by-block NequIP in e3nn; equivariance tests; training on a small dataset. |
+| `08b_nequip_implementation.ipynb` | Block-by-block NequIP in e3nn; equivariance and smoothness tests before training; packaging the model for reuse. |
+| `08c_nequip_training.ipynb` | Training NequIP with the joint energy + force loss; the rMD17 aspirin rematch against SchNet and DimeNet; the checkpoint Lesson 11 deploys. |
 | `09a_allegro_theory.ipynb` | Allegro: strictly local equivariant descriptors, the scalar track / tensor track design, scalability arguments. |
 | `09b_allegro_implementation.ipynb` | Block-by-block Allegro; comparison with NequIP on the same data. |
 | `10a_ace_theory.ipynb` | Atomic Cluster Expansion: body order, the density trick, completeness. |
