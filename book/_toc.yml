@@ -48,6 +48,7 @@ parts:
     chapters:
       - file: notebooks/08a_nequip_theory
   #     - file: notebooks/08b_nequip_implementation
+  #     - file: notebooks/08c_nequip_training
   #     - file: notebooks/09a_allegro_theory
   #     - file: notebooks/09b_allegro_implementation
   #     - file: notebooks/10a_ace_theory
