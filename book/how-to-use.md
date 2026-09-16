@@ -14,8 +14,9 @@ Every lesson follows the same rhythm, so you always know where you are:
    numerically;
 5. **Visualization**: at least one figure per major concept;
 6. **Summary**: what was built, and a pointer to the next lesson;
-7. **Exercises**: with solutions hidden behind collapsible blocks. Try them
-   yourself first before expanding the solution.
+7. **Exercises**: rated 🌶️ to 🌶️🌶️🌶️ (see [below](#exercise-difficulty)), with
+   solutions hidden behind collapsible blocks. Try them yourself first before
+   expanding the solution.
 
 ### The buttons in the top-right
 
@@ -48,6 +49,28 @@ because they are cheaper and print well.
 The pages are laid out to use the **full width of your screen**; on a wide
 monitor the 3D figures and the tensor-product tables get considerably more room.
 Use the fullscreen button for more space.
+
+(exercise-difficulty)=
+### Exercise difficulty
+
+Every exercise carries a chilli rating in its title, so you can pick what suits
+the time you have:
+
+| | meaning | typically |
+|---|---|---|
+| 🌶️ | **Easy.** Apply a rule the lesson just stated, or run and read off a result. Often a few lines built on code already in the notebook. | 5-15 minutes |
+| 🌶️🌶️ | **Moderate.** Modify the lesson's code and interpret what changes, derive a result and verify it numerically, or run a single training job and explain the outcome. | 30-60 minutes |
+| 🌶️🌶️🌶️ | **Hard.** Prove something on paper, build a component that is not in the lesson, or run several experiments and compare them. Expect open-ended reasoning rather than one right number. | an hour or more |
+
+The ratings measure *effort and open-endedness*, not importance. Several of the
+three-chilli exercises are the ones that make a lesson's point land hardest, and
+the deliberate-sabotage ones (break the envelope, break the symmetry, break the
+equivariance) are worth the time precisely because a model that has stopped
+being equivariant looks perfectly healthy until you test it.
+
+Timings assume you have read the lesson and are running on the course
+environment. Anything involving training is quoted for a GPU, and will take
+substantially longer on a CPU.
 
 ## Suggested paths through the course
 
