@@ -60,6 +60,12 @@ parts:
   #   chapters:
   #     - file: notebooks/11_molecular_dynamics_ase
 
+  # - caption: "Part VI: Advanced Topics"
+  #   numbered: true
+  #   chapters:
+  #     - file: notebooks/12a_cuequivariance_intro
+  #     - file: notebooks/12b_cuequivariance_acceleration
+
   - caption: Reference
     chapters:
       - file: book/further-reading

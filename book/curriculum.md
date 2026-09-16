@@ -61,3 +61,12 @@ dataset so the comparison is honest.*
 | Lesson | What you learn | Key API |
 |---|---|---|
 | [11 · Molecular dynamics with ASE](../notebooks/11_molecular_dynamics_ase.ipynb) | Wrapping a trained potential as an ASE `Calculator`; static energy/force parity on held-out configurations; velocity Verlet and why **NVE energy conservation is *the* sanity check** that forces are consistent with the energy; Langevin NVT sampling compared through $g(r)$; where a toy model breaks and what production workflows add | `ase.md`, `Calculator` |
+
+## Part VI: Advanced Topics (Lesson 12)
+
+*Bonus material. Everything in Parts I-V can run on a CPU but this part needs an NVIDIA GPU.*
+
+| Lesson | What you learn | Key API |
+|---|---|---|
+| [12a · cuEquivariance foundations](../notebooks/12a_cuequivariance_intro.ipynb) | Why equivariant tensor products are **memory-bound** rather than compute-bound, and limited by kernel-launch overhead at small system sizes; NVIDIA's descriptor abstraction (`EquivariantPolynomial` → `SegmentedPolynomial`) and how to read one; `cue.Irreps` and the `mul_ir` / `ir_mul` **memory layouts** that silently produce wrong numbers if mismatched; a first verified drop-in swap | `cuequivariance`, `cue.descriptors` |
+| [12b · Accelerating with cuEquivariance](../notebooks/12b_cuequivariance_acceleration.ipynb) | Measured **2.5-4×** speed-up on the NequIP/MACE convolution, **up to ~120×** on the symmetric contraction Lesson 10c could not afford, a flat **~2×** end to end (Amdahl), and a **0.08× regression** where fusion is the wrong tool; the float32 precision floor that forces you to recalibrate every equivariance assertion | `cuequivariance_torch` |
