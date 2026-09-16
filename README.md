@@ -49,16 +49,16 @@ We heavily rely on the following open-source packages packages: `torch`, `e3nn`,
 ## Repository Layout
 
 ```
-e3nn_course/
+e3nn-course/
 ├── README.md                 <- you are here
-├── STYLE_GUIDE.md            <- authoring conventions for all notebooks
 ├── pyproject.toml / uv.lock  <- reproducible environment (uv)
 ├── course_utils/             <- shared helpers imported by every notebook
+│   ├── data.py               <- small datasets, neighbor lists, train/val splits
 │   ├── equivariance.py       <- numerical equivariance test harness
-│   ├── plotting.py           <- spherical harmonics / irreps / training visualizations
-│   └── data.py               <- small datasets, neighbor lists, train/val splits
-├── notebooks/                <- the lessons (Parts I-V)
-└── papers/                   <- primary literature referenced throughout (see below)
+│   └── plotting.py           <- spherical harmonics / irreps / training visualizations
+├── notebooks/                <- the lessons (Parts I-VI)
+│   └── artifacts/            <- cached datasets and the checkpoints the lessons export
+└── book/                     <- Jupyter Book sources (the Sphinx source dir is the repo root)
 ```
 
 ## Curriculum at a Glance
@@ -110,6 +110,15 @@ e3nn_course/
 | Notebook | Topic |
 |---|---|
 | `11_molecular_dynamics_ase.ipynb` | Wrap a trained model as an ASE calculator; run MD; sanity checks (energy conservation, RDFs). |
+
+### Part VI: Advanced Topics (Lesson 12)
+
+Bonus material; requires an NVIDIA GPU.
+
+| Notebook | Topic |
+|---|---|
+| `12a_cuequivariance_intro.ipynb` | cuEquivariance foundations: fused kernels, descriptors, irreps layouts, drop-in swaps. |
+| `12b_cuequivariance_acceleration.ipynb` | Measured speedups on the convolution, MACE's symmetric contraction and a whole model — including where fusion loses. |
 
 ## Citing this Course
 
