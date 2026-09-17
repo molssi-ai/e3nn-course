@@ -48,7 +48,7 @@ parts:
     chapters:
       - file: notebooks/08a_nequip_theory
       - file: notebooks/08b_nequip_implementation
-  #     - file: notebooks/08c_nequip_training
+      - file: notebooks/08c_nequip_training
   #     - file: notebooks/09a_allegro_theory
   #     - file: notebooks/09b_allegro_implementation
   #     - file: notebooks/10a_ace_theory
@@ -61,10 +61,11 @@ parts:
   #     - file: notebooks/11_molecular_dynamics_ase
 
   # - caption: "Part VI: Advanced Topics"
-  #   numbered: true
-  #   chapters:
+  #  numbered: true
+  #  chapters:
   #     - file: notebooks/12a_cuequivariance_intro
   #     - file: notebooks/12b_cuequivariance_acceleration
+
 
   - caption: Reference
     chapters:
