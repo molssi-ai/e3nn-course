@@ -1,0 +1,16 @@
+# Blank issues stay enabled: the book's "Open issue" button (use_issues_button in
+# book/_config.yml) opens a blank issue with the page title filled in.
+blank_issues_enabled: true
+contact_links:
+  - name: Ask a question or share an idea
+    url: https://github.com/molssi-ai/e3nn-course/discussions
+    about: Questions about the lessons, the math or the code go to Discussions; issues are for problems and requests.
+  - name: Read the course book
+    url: https://molssi-ai.github.io/e3nn-course/
+    about: Every lesson with its stored outputs, plus setup instructions and the style guide.
+  - name: Contributing guide
+    url: https://github.com/molssi-ai/e3nn-course/blob/main/CONTRIBUTING.md
+    about: How to set up, which branch to target, and what a pull request needs.
+  - name: Code of Conduct concern
+    url: https://github.com/molssi-ai/e3nn-course/blob/main/CODE_OF_CONDUCT.md#enforcement
+    about: Report conduct concerns privately by email to ai@molssi.org, not in a public issue.

@@ -1,0 +1,67 @@
+name: Lesson topic request
+description: Suggest a model, method or topic the course does not cover yet.
+title: "[Lesson] <topic>"
+labels: ["lesson-request"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Please check the [curriculum](https://molssi-ai.github.io/e3nn-course/book/curriculum.html)
+        first: some planned lessons are not published yet.
+  - type: input
+    id: topic
+    attributes:
+      label: Topic
+      placeholder: Equiformer and equivariant attention
+    validations:
+      required: true
+  - type: textarea
+    id: motivation
+    attributes:
+      label: Why it belongs in the course
+      description: What a reader would be able to understand or build after this lesson that they cannot today.
+    validations:
+      required: true
+  - type: dropdown
+    id: part
+    attributes:
+      label: Where it fits
+      options:
+        - "Part I: Foundations (symmetry, irreps, equivariant operations)"
+        - "Part II: From operations to networks"
+        - "Part III: Invariant baselines"
+        - "Part IV: Equivariant interatomic potentials"
+        - "Part V: Applications"
+        - "Part VI: Advanced topics"
+        - "Not sure"
+    validations:
+      required: true
+  - type: input
+    id: prerequisites
+    attributes:
+      label: Prerequisite lessons
+      description: Which existing lessons a reader should finish first.
+      placeholder: 03a, 03b, 06a, 08a
+  - type: textarea
+    id: references
+    attributes:
+      label: Key references
+      description: The primary papers (with DOI or arXiv links) and any reference implementation, with its license.
+    validations:
+      required: true
+  - type: textarea
+    id: outline
+    attributes:
+      label: Proposed outline
+      description: The main sections, and whether the topic needs a theory (`a`) and an implementation (`b`) notebook.
+  - type: textarea
+    id: compute
+    attributes:
+      label: Data and compute
+      description: Datasets the lesson would use, and whether training fits the course budget (about 2 minutes on a GPU for a toy run, about 10 minutes for a benchmark run).
+  - type: checkboxes
+    id: pr
+    attributes:
+      label: Contribution
+      options:
+        - label: I would like to write this lesson, or help write it.

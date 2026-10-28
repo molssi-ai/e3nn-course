@@ -49,9 +49,15 @@ at the repository's root directory.
 - Notebooks import shared helpers from `course_utils` (`sys.path.append("..")`
   in setup cell). Never copy-paste helper code between notebooks.
 - Every trainable model prints its parameter count after construction.
-- Training cells must run in $\leq$ $\approx$2 minutes on GPU / $\leq$
-  $\approx$10 on CPU; datasets are kept tiny (aspirin/MD17-style subsets, toy
-  point clouds). **Reproducibility over benchmark accuracy.**
+- Training budget on GPU: $\leq$ $\approx$2 min for a control run on toy data
+  (LJ argon, tetris), $\leq$ $\approx$10 min for a benchmark run on real data
+  (the rMD17 rematch thread), $\leq$ $\approx$10 min for a whole notebook.
+  Datasets stay tiny; benchmark notebooks are GPU-targeted.
+  **Reproducibility over benchmark accuracy.**
+- Spend a benchmark run only to quote a number against another lesson on the
+  same protocol; export its checkpoint to `artifacts/` if a later lesson needs it.
+- Quote results to the precision a re-run reproduces: GPU scatter-adds use
+  nondeterministic atomics, so seeded runs drift by a few tenths of a percent.
 - Set seeds; keep any download optional with a local fallback.
 - No `!pip install` cells! The environment is fully specified by
   `pyproject.toml`.
