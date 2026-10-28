@@ -136,7 +136,14 @@ The [authoring style guide](style-guide) is the contract every notebook follows:
 structure, citation format, the shared math notation, code conventions, and
 figure rules. Read it before opening a pull request.
 
-We welcome corrections, clarifications and new exercises. Please open an issue
-before starting a pull request, so we can discuss the change and avoid
-duplicated work. See:
-[github.com/molssi-ai/e3nn-course](https://github.com/molssi-ai/e3nn-course).
+We welcome corrections, clarifications, new exercises and lesson proposals.
+Please open an issue before starting a pull request, so we can discuss the
+change and avoid duplicated work. The
+[contributing guide](https://github.com/molssi-ai/e3nn-course/blob/main/CONTRIBUTING.md)
+explains the workflow, and the
+[issue forms](https://github.com/molssi-ai/e3nn-course/issues/new/choose) cover
+corrections, notebook bugs, exercise proposals and lesson requests. Questions
+about a lesson are welcome in
+[Discussions](https://github.com/molssi-ai/e3nn-course/discussions). Everyone
+taking part is expected to follow the
+[Code of Conduct](https://github.com/molssi-ai/e3nn-course/blob/main/CODE_OF_CONDUCT.md).
