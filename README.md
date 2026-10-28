@@ -6,6 +6,10 @@ to a complete and working implementations of state-of-the-art invariant baseline
 models **SchNet**, **DimeNet** and equivariant interatomic potentials such as
  **NequIP**, **Allegro**, and **MACE**.
 
+This course is a companion to the [xnn](https://github.com/molssi-ai/xnn)
+software package which offers a comprehensive collection of neural network
+machine learning interatomic potentials for molecules and materials.
+
 Every lesson follows the same philosophy:
 
 1. **Theory first.** Each operation is derived and motivated mathematically
@@ -100,7 +104,7 @@ e3nn-course/
 | `08b_nequip_implementation.ipynb` | Block-by-block NequIP in e3nn; equivariance and smoothness tests before training; packaging the model for reuse. |
 | `08c_nequip_training.ipynb` | Training NequIP with the joint energy + force loss; the rMD17 aspirin rematch against SchNet and DimeNet; the checkpoint Lesson 11 deploys. |
 | `09a_allegro_theory.ipynb` | Allegro: strictly local equivariant descriptors, the scalar track / tensor track design, scalability arguments. |
-| `09b_allegro_implementation.ipynb` | Block-by-block Allegro; comparison with NequIP on the same data. |
+| `09b_allegro_implementation.ipynb` | Block-by-block Allegro; trained on rMD17 aspirin under Lesson 08c's protocol and compared with NequIP on the same frames. |
 | `10a_ace_theory.ipynb` | Atomic Cluster Expansion: body order, the density trick, completeness. |
 | `10b_mace_theory.ipynb` | MACE: higher-order equivariant message passing = ACE + message passing; the design-space view. |
 | `10c_mace_implementation.ipynb` | Block-by-block MACE in e3nn; training and evaluating forces/energies. |
@@ -119,6 +123,16 @@ Bonus material; requires an NVIDIA GPU.
 |---|---|
 | `12a_cuequivariance_intro.ipynb` | cuEquivariance foundations: fused kernels, descriptors, irreps layouts, drop-in swaps. |
 | `12b_cuequivariance_acceleration.ipynb` | Measured speedups on the convolution, MACE's symmetric contraction and a whole model — including where fusion loses. |
+
+## Contributing
+
+Corrections, clarifications, new exercises and lesson proposals are welcome.
+Please read [CONTRIBUTING.md](CONTRIBUTING.md) and the
+[style guide](STYLE_GUIDE.md) before opening a pull request, and use the
+[issue forms](https://github.com/molssi-ai/e3nn-course/issues/new/choose) to
+report a problem or suggest a topic. Questions are welcome in
+[Discussions](https://github.com/molssi-ai/e3nn-course/discussions). Everyone
+taking part is expected to follow the [Code of Conduct](CODE_OF_CONDUCT.md).
 
 ## Citing this Course
 
