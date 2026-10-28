@@ -1,0 +1,54 @@
+name: Exercise proposal
+description: Propose a new exercise, or a change to an existing one, for a lesson.
+title: "[Exercise] <lesson>: <short title>"
+labels: ["exercise"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Good exercises make a point of the lesson land. They pose a task without
+        giving the answer away, and their solution code runs on top of what the
+        lesson defines. See "Writing exercises" in CONTRIBUTING.md.
+  - type: input
+    id: lesson
+    attributes:
+      label: Lesson
+      placeholder: 06b_tetris_end_to_end
+    validations:
+      required: true
+  - type: dropdown
+    id: difficulty
+    attributes:
+      label: Difficulty
+      description: See "Exercise difficulty" in the book's How to use this book page.
+      options:
+        - "🌶️ Easy (5-15 minutes): apply a rule the lesson just stated"
+        - "🌶️🌶️ Moderate (30-60 minutes): modify the lesson's code, or derive and verify a result"
+        - "🌶️🌶️🌶️ Hard (an hour or more): prove something, build a new component, or compare experiments"
+    validations:
+      required: true
+  - type: textarea
+    id: statement
+    attributes:
+      label: Exercise statement
+      description: The task as the reader would see it.
+    validations:
+      required: true
+  - type: textarea
+    id: goal
+    attributes:
+      label: What it teaches
+      description: Which idea from the lesson this exercise reinforces, and why it is worth the reader's time.
+    validations:
+      required: true
+  - type: textarea
+    id: solution
+    attributes:
+      label: Solution sketch
+      description: The reasoning and, if applicable, the code. Code should use only the lesson's helpers and inputs and build everything else itself.
+  - type: checkboxes
+    id: pr
+    attributes:
+      label: Contribution
+      options:
+        - label: I would like to write this exercise and its solution in a pull request.

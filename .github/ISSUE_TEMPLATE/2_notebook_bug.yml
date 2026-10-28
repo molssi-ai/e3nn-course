@@ -1,0 +1,74 @@
+name: Notebook does not run
+description: A cell raises an error, hangs, or produces output that does not match the lesson.
+title: "[Bug] <lesson>: <short summary>"
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Before reporting, please check that:
+
+        - the environment was created with `uv sync` from the repository root;
+        - the notebook was opened from the `notebooks/` directory, so that `course_utils` is importable;
+        - the notebook was run from the top in a fresh kernel.
+  - type: input
+    id: lesson
+    attributes:
+      label: Lesson
+      placeholder: 08c_nequip_training
+    validations:
+      required: true
+  - type: textarea
+    id: cell
+    attributes:
+      label: Failing cell
+      description: The section heading and the code of the cell that fails (or the first lines of it).
+      render: python
+    validations:
+      required: true
+  - type: textarea
+    id: behavior
+    attributes:
+      label: Expected and actual behavior
+      description: What you expected, and what happened instead. For a wrong result, give both numbers.
+    validations:
+      required: true
+  - type: textarea
+    id: traceback
+    attributes:
+      label: Full error message
+      description: Paste the complete traceback as text, not a screenshot.
+      render: text
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment
+      description: |
+        From the repository root, run the command below and paste its output:
+
+        ```bash
+        .venv/bin/python -c "import sys, platform, torch, e3nn; print(sys.version); print(platform.platform()); print('torch', torch.__version__, '| CUDA', torch.version.cuda, '| GPU available', torch.cuda.is_available()); print('e3nn', e3nn.__version__)"
+        ```
+      render: text
+    validations:
+      required: true
+  - type: dropdown
+    id: device
+    attributes:
+      label: Device
+      options:
+        - CPU
+        - NVIDIA GPU
+        - Apple Silicon (MPS)
+        - Other
+    validations:
+      required: true
+  - type: dropdown
+    id: changes
+    attributes:
+      label: Did you modify the notebook or `course_utils`?
+      options:
+        - "No, I ran it unchanged"
+        - "Yes (please describe the change above)"
+    validations:
+      required: true

@@ -1,0 +1,65 @@
+name: Correction or clarification
+description: A wrong equation, a misattributed citation, a typo, a broken link, or an explanation that is hard to follow.
+title: "[Correction] <lesson>: <short summary>"
+labels: ["correction"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for reading carefully! Small fixes, such as a typo, can also go
+        straight to a pull request against `dev`.
+  - type: input
+    id: lesson
+    attributes:
+      label: Lesson
+      description: The notebook name, or the book page title.
+      placeholder: 10a_ace_theory
+    validations:
+      required: true
+  - type: input
+    id: section
+    attributes:
+      label: Section
+      description: The heading of the section the problem is in.
+      placeholder: Connection to message passing
+    validations:
+      required: true
+  - type: dropdown
+    id: kind
+    attributes:
+      label: Kind of problem
+      options:
+        - Mathematical error (equation, derivation, notation)
+        - Citation (wrong paper, equation or section number, broken DOI)
+        - Unclear or disconnected explanation
+        - Code comment or variable name does not match the math
+        - Figure (wrong, unlabeled or misleading)
+        - Typo, grammar or formatting
+        - Broken link
+        - Other
+    validations:
+      required: true
+  - type: textarea
+    id: problem
+    attributes:
+      label: What is wrong
+      description: Quote the text or equation as it appears in the lesson, and explain the problem.
+    validations:
+      required: true
+  - type: textarea
+    id: suggestion
+    attributes:
+      label: Suggested fix
+      description: Your proposed wording or equation, if you have one.
+  - type: textarea
+    id: source
+    attributes:
+      label: Source
+      description: For mathematical or citation problems, the paper you are comparing against (DOI or arXiv link) and its equation or section number.
+      placeholder: "Drautz, Phys. Rev. B 99, 014104 (2019), https://doi.org/10.1103/PhysRevB.99.014104, Sec. III"
+  - type: checkboxes
+    id: pr
+    attributes:
+      label: Contribution
+      options:
+        - label: I would like to open a pull request for this fix.
