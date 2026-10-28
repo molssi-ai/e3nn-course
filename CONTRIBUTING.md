@@ -105,7 +105,8 @@ often in review are:
   cell, then implements exactly that math in a short code cell (about 25 lines
   or fewer) whose variable names mirror the symbols.
 - **Define every symbol at first use**, and use the course-wide notation from the
-  style guide (for example $\vec r_{ij} = \vec r_j - \vec r_i$).
+  style guide (for example, the edge vector `r_ij = r_j - r_i` points from atom
+  `i` to atom `j`).
 - **Write for the reader.** Each paragraph should follow from the one before it.
   Build on what the lesson has already shown before introducing a new framework
   or paper. Prefer short, complete sentences, and say what a quantity is before
