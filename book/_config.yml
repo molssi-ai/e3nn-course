@@ -19,8 +19,11 @@ only_build_toc_files: true
 exclude_patterns:
   - .venv
   - .venv-docs
+  - .github
   - README.md
   - STYLE_GUIDE.md
+  - CONTRIBUTING.md
+  - CODE_OF_CONDUCT.md
   - book/_build
   - notebooks/artifacts
 
